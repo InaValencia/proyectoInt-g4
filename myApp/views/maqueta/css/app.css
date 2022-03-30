@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: aqua;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -259,7 +259,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: aqua;
   padding: 20px 0;
   margin-top: 80px;
 }
