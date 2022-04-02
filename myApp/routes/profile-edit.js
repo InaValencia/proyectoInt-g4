@@ -10,4 +10,4 @@ router.get('/profile-edit', profileEditController)
 
 
 
-module.exports = profileEdit;
+module.exports = router;

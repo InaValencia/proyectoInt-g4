@@ -1,8 +1,6 @@
 const indexController = {
     showIndex: function (req, res) {
-        return res.render('index', {
-            //vacio
-        })
+        return res.render('index',)
     }
 };
 

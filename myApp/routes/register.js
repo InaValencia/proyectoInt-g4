@@ -13,4 +13,4 @@ router.get('/register', registerController)
 
 
 
-module.exports = register
+module.exports = router

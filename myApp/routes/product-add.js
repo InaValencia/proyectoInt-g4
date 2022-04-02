@@ -10,4 +10,4 @@ router.get('/product-add', productAddController)
 
 
 
-module.exports = productAdd;
+module.exports = router;

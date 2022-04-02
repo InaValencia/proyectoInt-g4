@@ -10,4 +10,4 @@ router.get('/login', loginController);
 
 
 
-module.exports = login;
+module.exports = router;

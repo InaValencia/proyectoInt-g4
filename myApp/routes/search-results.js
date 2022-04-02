@@ -11,5 +11,5 @@ router.get('/search-results', searchResultsController);
 
 
 
-module.exports = search
+module.exports = router;
 

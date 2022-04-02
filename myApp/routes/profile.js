@@ -10,4 +10,4 @@ router.get('/profile', profileController);
 
 
 
-module.exports = profile;
+module.exports = router;

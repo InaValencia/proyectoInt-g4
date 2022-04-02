@@ -8,4 +8,4 @@ router.get('/', indexController)
 
 
 
-module.exports = index
+module.exports = router;
