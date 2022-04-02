@@ -11,7 +11,7 @@ const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const searchResultsRouter = require('./routes/search-results');
-const productRouter = require('./routes/product');
+const productRouter = require('./routes/products');
 const profileRouter = require('./routes/profile');
 
 
