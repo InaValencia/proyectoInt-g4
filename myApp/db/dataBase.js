@@ -6,7 +6,7 @@ const dataBase = {
         numberOfProducts: 157,
         followers: 1425,
         comments: 77,
-        profilePic: ''
+        profilePic: '',
     },
 
     products: [
@@ -72,3 +72,5 @@ const dataBase = {
         }
     ]
 }
+
+module.exports = dataBase;
