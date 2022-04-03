@@ -1,5 +1,4 @@
-const { products } = require('../db/dataBase');
-let dataBase = require('../db/dataBase')
+const dataBase = require('../db/dataBase')
 
 const indexController = {
     showIndex: function (req, res) {
