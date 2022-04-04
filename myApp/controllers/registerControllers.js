@@ -1,7 +1,12 @@
+const dataBase = require('../db/dataBase')
+
 const registerController = {
     showRegister: function (req, res) {
         return res.render('register', {
-            //vacio
+            user: dataBase.user,
+            products: dataBase.products,
+            comments: dataBase.comments,
+            logueado: true,
         })
     }
 } ;

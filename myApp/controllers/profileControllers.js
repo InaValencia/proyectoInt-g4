@@ -1,7 +1,12 @@
+const dataBase = require('../db/dataBase')
+
 const profileController = {
     showProfile: function (req, res) {
         return res.render('profile', {
-            //vacio
+            user: dataBase.user,
+            products: dataBase.products,
+            comments: dataBase.comments,
+            logueado: true,
         })
     }
 };

@@ -3,7 +3,10 @@ const dataBase = require('../db/dataBase') //
 const loginController = {
     showLogin: function (req, res) {
         return res.render('login', {
-            //vacio
+                user: dataBase.user,
+                products: dataBase.products,
+                comments: dataBase.comments,
+                logueado: true,
         })
     }
 };
