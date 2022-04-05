@@ -4,9 +4,9 @@ const indexController = require('../controllers/indexControllers')
 
 router.get('/', indexController.showIndex);
 
-router.get('/login', indexController.showIndex);
+router.get('/login', indexController.showLogin);
 
-router.get('/register', indexController.showIndex);
+router.get('/register', indexController.showRegister);
 
 
 
