@@ -14,7 +14,7 @@ const searchResultsRouter = require('./routes/search-results');
 const productRouter = require('./routes/products');
 const profileRouter = require('./routes/profile');
 
-
+ // hola 
 var app = express();
 
 // view engine setup
