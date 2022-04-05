@@ -12,5 +12,3 @@ const profileController = {
 };
 
 module.exports = profileController;
-
-//esto va directo a indexController y este archivo se borra. 
