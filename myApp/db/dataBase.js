@@ -13,52 +13,52 @@ const dataBase = {
         {
         model:'Jordan 1 high',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/jordan1.png'
         },
          {
         model:'Jordan 1 high',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/jordan1.png'
         },
          {
         model:'Jordan 1 high',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/jordan1.png'
         },
          {
         model:'Nike Dunk',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/nikeDunk.png'
         },
          {
         model:'Nike Dunk',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/nikeDunk.png'
         },
          {
         model:'Nike Dunk',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/nikeDunk.png'
         },
          {
         model:'Yeezy 350',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/yeezy350.png'
         },
          {
         model:'Yeezy 350',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/yeezy350.png'
         },
          {
         model:'Yeezy 350',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/yeezy350.png'
         },
          {
         model:'Yeezy 350',
         description:'Zapatillas de alta calidad. Par indispensable e imperdible, únicas en el país, no perderse esta oportunidad',
-        image: ''
+        image: '../public/images/products/yeezy350.png'
         },
         
 
