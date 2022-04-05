@@ -8,6 +8,14 @@ const profileController = {
             comments: dataBase.comments,
             logueado: true,
         })
+    },
+    showProfileEdit: function (req, res) {
+        return res.render('profile-edit', {
+            user: dataBase.user,
+            products: dataBase.products,
+            comments: dataBase.comments,
+            logueado: true,
+        })
     }
 };
 

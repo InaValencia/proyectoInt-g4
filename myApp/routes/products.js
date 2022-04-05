@@ -4,7 +4,7 @@ const productController = require('../controllers/productControllers');
 
 router.get('/', productController.showProduct)
 
-router.get('/add' , productController.showProduct)
+router.get('/add' , productController.showProductAdd)
 
 
 

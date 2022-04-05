@@ -4,6 +4,10 @@ const profileController = require('../controllers/profileControllers')
 
 router.get('/', profileController.showProfile);
 
+router.get('/', profileController.showProfileEdit);
+
+
+
 
 
 
