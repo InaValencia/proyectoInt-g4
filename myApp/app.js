@@ -6,10 +6,7 @@ var logger = require('morgan');
 
 
 //RUTAS
-var usersRouter = require('./routes/users');
 const indexRouter = require('./routes/index');
-const registerRouter = require('./routes/register');
-const loginRouter = require('./routes/login');
 const searchResultsRouter = require('./routes/search-results');
 const productRouter = require('./routes/products');
 const profileRouter = require('./routes/profile');
@@ -29,15 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //CUANDO EL USUARIO REQUIERE / ALGO... 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/register', registerRouter);
-app.use('/login', loginRouter );
 app.use('/search-results', searchResultsRouter);
 app.use('/products', productRouter);
-app.use('/products/add', productRouter);
 app.use('/profile', profileRouter );
-app.use('/profile/edit', profileRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

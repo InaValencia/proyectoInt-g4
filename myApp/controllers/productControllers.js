@@ -8,7 +8,7 @@ const productController = {
             comments: dataBase.comments,
             logueado: true,
         })
-    }
+    },
 } ;
 
 module.exports = productController;
