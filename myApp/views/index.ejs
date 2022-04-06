@@ -7,12 +7,17 @@
 <body>
 
 	<!-- Include Header -->
-<%- include('./partials/headerNoLogueado')  %> 
+
+<%if (logueado == false){%>
+<%- include("partials/headerNoLogueado.ejs") %>
+<%} else { %>
+<%- include("partials/headerLogueado.ejs") %>
+<% } %>
 
 
 	<!-- Banner -->
 	<div class="banner">
-		<img src="images/homeBanner.png" alt="Banner de ofertas">
+		<img src="images/bannerJustHype.png" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
 

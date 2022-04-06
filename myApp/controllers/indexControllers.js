@@ -6,7 +6,7 @@ const indexController = {
             user: dataBase.user,
             products: dataBase.products,
             comments: dataBase.comments,
-            logueado: true,
+            logueado: false,
         })
     },
     showLogin: function (req, res) {

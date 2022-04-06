@@ -10,7 +10,8 @@
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family: 'Roboto', sans-serif;
+  --black: black;
 }
 
 
@@ -29,7 +30,7 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color: var(--black);
 }
 
 ul,
@@ -68,12 +69,13 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: var(--black);
 }
 
 .main-header_home-link,
 .main-header_credit-link {
   display: block;
+  color: var(--light-gray);
 }
 
 .main-header_credit-link {
@@ -137,6 +139,7 @@ hr {
   border: 0px;
   cursor: pointer;
   font-size: 1em;
+  color: var(--light-gray);
 }
 
 .logout:hover{
@@ -148,6 +151,7 @@ hr {
   display: block;
   padding: 5px 0;
   border-bottom: solid 1px var(--gray);
+  color: var(--light-gray);
 }
 
 
@@ -259,7 +263,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: rgb(226, 76, 76);
+  background-color: #383838;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -269,18 +273,18 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: var(--light-gray);
   font-size: 3.5em;
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color: var(--light-gray);
   font-size: 2.4em;
   font-weight: 400;
 }
 
 .footer-data p {
-  color: var(--gray);
+  color: var(--light-gray);
   font-size: 1.5em;
   font-weight: 300;
 }
@@ -508,7 +512,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: var(--light-gray);
   }
 
   .left-navbar li {
