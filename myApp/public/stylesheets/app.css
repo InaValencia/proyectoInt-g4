@@ -467,6 +467,11 @@ textarea.form-input {
   padding: 15px;
 }
 
+.letraForm{
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 /*====== Profile ======*/
 .info-usuario{
   border-bottom: 1px solid #ccc;
