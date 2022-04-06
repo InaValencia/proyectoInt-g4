@@ -528,6 +528,7 @@ textarea.form-input {
   .right-navbar a {
     border-bottom: none;
     font-family: 'Urbanist', sans-serif;;
+    font-size: 128%;
   }
 
   .left-navbar a:hover,
