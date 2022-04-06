@@ -76,6 +76,11 @@ hr {
 .main-header_credit-link {
   display: block;
   color: var(--light-gray);
+  
+}
+
+.main-header_home-link img {
+  width: 120%;
 }
 
 .main-header_credit-link {
@@ -88,6 +93,7 @@ hr {
   position: relative;
   display: flex;
   align-items: center;
+  margin-left: 15px;
 }
 
 .search-form_input {
@@ -173,9 +179,10 @@ hr {
 }
 
 .products-title {
-  font-size: 2.4em;
+  font-size: 3.9em;
   font-weight: 400;
-  color: var(--gray);
+  color: var(--light-gray);
+  font-family: 'Urbanist', sans-serif;
 }
 
 .product-box {
@@ -200,12 +207,14 @@ hr {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  
 }
 
 .product-box_data h2 {
-  font-size: 2.4em;
+  font-size: 3.1em;
   font-weight: 300;
   margin: 0;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .product-box_data span {
@@ -223,6 +232,7 @@ hr {
   height: 0;
   transition: 300ms;
   overflow: hidden;
+  font-family: 'Questrial', sans-serif;
 }
 
 .product-box_data i {
@@ -480,12 +490,16 @@ textarea.form-input {
   color: #fff;
 }
 
+.logInForm {
+ color: white;
+}
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {
   .main-header_credit-link {
     margin-top: 0;
     text-align: right;
+    font-family: 'Urbanist', sans-serif;
   }
 
   .banner {
@@ -508,6 +522,7 @@ textarea.form-input {
   .left-navbar a,
   .right-navbar a {
     border-bottom: none;
+    font-family: 'Urbanist', sans-serif;;
   }
 
   .left-navbar a:hover,
@@ -531,4 +546,5 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
+
 }
