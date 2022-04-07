@@ -13,29 +13,50 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Get register at Just Hype:</h2>
+				<h2 class="products-title">Get registered at Just Hype:</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			
+			<div>
 			<form action="/profile" method="get" class="logInForm">
+
+			<div>
 				<label class= "letraForm" for="mail"> E-mail: </label>
 				<input type="email" name="mail" placeholder= "email" value="">
+			</div>
 
+			<div>
 				<label  class= "letraForm" for="user"> Username:</label>
 				<input type="text" name="user" placeholder= "username" value="">
+			</div>
 
-				<label  class= "letraForm" for="password"> Passoword: </label>
+			<div>
+				<label  class= "letraForm" for="password"> Password: </label>
 				<input type="password" name="password" placeholder= "password" value=""> 
+			</div>
 
-				<label class= "letraForm"for="id"> ID: </label>
+			<div>
+				<label class= "letraForm" for="age"> Date of birth: </label>
+				<input type="date" name="birthday" placeholder= "Date of birth" value="">
+			</div>
+
+			<div>
+				<label class= "letraForm" for="id"> ID: </label>
 				<input type="text" name="id" placeholder= "id" value="">
+			</div>
 
-				<label class= "letraForm" for="age"> Age: </label>
-				<input type="text" name="birthday" placeholder= "age" value="">
+			<div>
+				<label class= "letraForm" for="profilePic"> Choose a profile pic: </label>
+				<input type="file" name="img" placeholder= "Profile pic" value="">
+			</div>
 
 			<div>
 				<button type="submit"> Register </button>
 			</div>
+			
+			</div>
+
+			
 
 			</form>
 			

@@ -16,16 +16,26 @@
 			</div>
 <!-- form para login --> 
 		<form action="/" method="get" class="logInForm">
-			<label class= "letraForm"for="mail">E-mail:</label>
-			<input type="email" name="mail" placeholder= "Username" value="">
 
-			<label class= "letraForm" for="password"> Password: </label>
-			<input type="password" name="password" placeholder= "Password" value=""> 
+			<div>
+				<label class= "letraForm"for="mail">E-mail:</label>
+				<input type="email" name="mail" placeholder= "Username" value="">
+			</div>
 
-			<label class= "letraForm" for="checkbox"> Remind me </label>
-			<input type="checkbox" name="recordarme" value= "remindMe" >
+			<div>
+				<label class= "letraForm" for="password"> Password: </label>
+				<input type="password" name="password" placeholder= "Password" value=""> 
+			</div>
 
-			<button type="submit"> Sign in </button>
+			<div>
+				<label class= "letraForm" for="checkbox"> Remind me </label>
+				<input type="checkbox" name="recordarme" value= "remindMe" >
+			</div>
+
+			<div>
+				<button type="submit"> Sign in </button>
+			</div>
+		 
 		</form>
 <!-- footer -->
 	<%- include('./partials/footer.ejs')  %> 
