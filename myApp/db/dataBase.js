@@ -1,12 +1,12 @@
 const dataBase = {
 
     user: {
-        name: 'Brian',
-        surname: 'Gomez',
+        name: 'Sebastián',
+        surname: 'Rellihan',
         numberOfProducts: 157,
-        followers: 1425,
+        followers: 14250,
         comments: 77,
-        profilePic: '',
+        profilePic: '/images/users/sebiProfile.jpeg',
     },
 
     products: [

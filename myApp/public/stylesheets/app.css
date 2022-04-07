@@ -486,6 +486,7 @@ textarea.form-input {
 .main-title{
   font-size: 25px;
   margin-bottom: 10px;
+  color: var(--light-gray);
 }
 
 .btn{
@@ -495,9 +496,17 @@ textarea.form-input {
   color: #fff;
 }
 
+li {
+  color: var(--light-gray);
+}
+
+
+/* log in form */
 .logInForm {
  color: white;
 }
+
+
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {
