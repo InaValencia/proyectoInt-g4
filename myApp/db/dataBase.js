@@ -98,7 +98,7 @@ const dataBase = {
         {
         user:'Ale_Vivone',
         text: 'Gran producto! Muy recomendado',
-        profilePic: '.'
+        profilePic: '/images/users/aleVivone.jpeg'
         }
     ]
 }

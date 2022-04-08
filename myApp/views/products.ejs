@@ -27,12 +27,13 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
+						<% for( let i = 0; i < comments.length; i++ ) { %>
 						<article>
-							<img src="/images/users/aleVivone.jpeg" alt="">
+							<img src= <%= comments[i].profilePic %> alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile">Nombre usuario: Ale Vivone</a> </strong>
-								Mejores zapatillas que compre en mi vida, para mi vida como programador son las cosas mas comodas que use en mi vida.</p>
+								<strong> <a href="/profile">Nombre usuario:  <%= comments[i].user%> </a> </strong>
+								<%= comments[i].text %> </p>
 							</div>
 						</article>
 						<article>
@@ -56,7 +57,7 @@
 							<img src="/images/users/brianGomez.jpeg" alt="">
 							<div class="data">
 								<p class="user">
-									<strong> <a href="/profile">Nombre usuario: Brian Gomez</a> </strong>
+									<strong> <a href="/profile"> Nombre usuario: Brian Gomez</a> </strong>
 									Como jugador profesional de Temperley, esas son las mejores y mas facheras zapatillas que use en mucho tiempo.</p>
 							</div>
 						</article>
@@ -68,7 +69,7 @@
 									Mejores zapatillas que compre en mi vida, para mi vida como programador son las cosas mas comodas que use en mi vida.</p>
 							</div>
 						</article>
-
+						<% } %>
 					</section>
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
