@@ -7,7 +7,11 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerLogueado')  %> 
+	<%if (logueado){%>
+		<%- include("partials/headerLogueado.ejs") %>
+		<%} else { %>
+		<%- include("partials/headerNoLogueado.ejs") %>
+	<% } %>
 	<!-- /Header -->
 	
 	<!-- product detail -->

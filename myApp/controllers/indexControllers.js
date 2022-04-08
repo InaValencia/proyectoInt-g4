@@ -5,7 +5,7 @@ const indexController = {
         return res.render('index', {
             user: dataBase.user,
             products: dataBase.products,
-            logueado: true,
+            logueado: false,
         })
     },
     showLogin: function (req, res) {

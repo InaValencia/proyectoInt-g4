@@ -6,7 +6,11 @@
 
 <body>
 	<!-- Include Header -->
-<%- include('./partials/headerLogueado')  %> 
+	<%if (logueado){%>
+		<%- include("partials/headerLogueado.ejs") %>
+		<%} else { %>
+		<%- include("partials/headerNoLogueado.ejs") %>
+	<% } %>
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
