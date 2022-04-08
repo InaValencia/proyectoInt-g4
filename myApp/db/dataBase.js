@@ -97,7 +97,7 @@ const dataBase = {
     comments: [
         {
         user:'Brian_Gomez',
-        text: 'Buenisimas zapatillas para los partidos en Temperley',
+        text: 'Buenisimas zapatillas para flexearlas en Digital House',
         profilePic: '/images/users/brianGomez.jpeg'
         },
         {
@@ -107,12 +107,12 @@ const dataBase = {
         },
         {
         user:'Sebi_Rellihan',
-        text: 'Cuando trabajaba en digital House eran las zapatillas que usaba',
+        text: 'Cuando trabajaba en Digital House eran las zapatillas que usaba',
         profilePic: '/images/users/sebiProfile.jpeg'
         },
         {
         user:'Brian_Gomez',
-        text: 'Buenisimas zapatillas para los partidos en Temperley',
+        text: 'Buenisimas zapatillas para flexearlas en Digital House',
         profilePic: '/images/users/brianGomez.jpeg'
         },
         {
