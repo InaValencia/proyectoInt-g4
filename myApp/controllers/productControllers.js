@@ -13,8 +13,6 @@ const productController = {
     function (req, res) {
         return res.render('product-add', {
             user: dataBase.user,
-            products: dataBase.products,
-            comments: dataBase.comments,
             logueado: true,
         })
     }

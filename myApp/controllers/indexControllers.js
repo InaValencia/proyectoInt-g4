@@ -5,23 +5,18 @@ const indexController = {
         return res.render('index', {
             user: dataBase.user,
             products: dataBase.products,
-            comments: dataBase.comments,
             logueado: true,
         })
     },
     showLogin: function (req, res) {
         return res.render('login', {
                 user: dataBase.user,
-                products: dataBase.products,
-                comments: dataBase.comments,
                 logueado: true,
         })
     },
     showRegister: function (req, res) {
         return res.render('register', {
             user: dataBase.user,
-            products: dataBase.products,
-            comments: dataBase.comments,
             logueado: true,
         })
     }

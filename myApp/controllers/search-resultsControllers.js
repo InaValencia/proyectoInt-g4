@@ -5,7 +5,6 @@ const searchResultsController = {
         return res.render('search-results', {
             user: dataBase.user,
             products: dataBase.products,
-            comments: dataBase.comments,
             logueado: true,
         })
     }
