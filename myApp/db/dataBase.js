@@ -96,10 +96,35 @@ const dataBase = {
 
     comments: [
         {
+        user:'Brian_Gomez',
+        text: 'Buenisimas zapatillas para los partidos en Temperley',
+        profilePic: '/images/users/brianGomez.jpeg'
+        },
+        {
         user:'Ale_Vivone',
         text: 'Gran producto! Muy recomendado',
         profilePic: '/images/users/aleVivone.jpeg'
-        }
+        },
+        {
+        user:'Sebi_Rellihan',
+        text: 'Cuando trabajaba en digital House eran las zapatillas que usaba',
+        profilePic: '/images/users/sebiProfile.jpeg'
+        },
+        {
+        user:'Brian_Gomez',
+        text: 'Buenisimas zapatillas para los partidos en Temperley',
+        profilePic: '/images/users/brianGomez.jpeg'
+        },
+        {
+        user:'Ale_Vivone',
+        text: 'Gran producto! Muy recomendado',
+        profilePic: '/images/users/aleVivone.jpeg'
+        },
+        {
+        user:'Sebi_Rellihan',
+        text: 'Cuando trabajaba en digital House eran las zapatillas que usaba',
+        profilePic: '/images/users/sebiProfile.jpeg'
+        },
     ]
 }
 

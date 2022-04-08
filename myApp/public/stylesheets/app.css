@@ -506,6 +506,11 @@ li {
  color: white;
 }
 
+/* edit product */
+.editButton{
+  color: white;
+}
+
 
 
 /*====== Media-Queries ======*/

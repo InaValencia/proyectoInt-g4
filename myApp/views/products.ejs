@@ -13,60 +13,27 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title">Jordan 1 High </h2> 
+			<h2 class="products-title"><%= products[1].model %> </h2> 
 			<p class="product-detail-description">
-				<a href="/products">Editar</a>
+				<a class= "editButton" href="/products">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="./images/products/Jordan1.png" alt="" class="product-detail-img">
+					<img src="<%= products[1].image%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						The Air Jordan 1 Retro High OG Light Smoke Grey emerges with a neutral look and a vibrant accent. The shoes upper features a white leather base overlaid by Light Smoke Grey suede, with black contrast on the Swoosh, collar, laces and tongue tag. The collar flap highlights the look in Varsity Red, matched by the tongue branding, while an Air midsole and concentric outsole support the fit underfoot.</p>
+						<%= products[1].description  %> </p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for( let i = 0; i < comments.length; i++ ) { %>
+						<% for (let i = 0; i < comments.length; i++) { %>
 						<article>
 							<img src= <%= comments[i].profilePic %> alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile">Nombre usuario:  <%= comments[i].user%> </a> </strong>
+								<strong> <a href="/profile"><%= comments[i].user%> </a> </strong>
 								<%= comments[i].text %> </p>
-							</div>
-						</article>
-						<article>
-							<img src="/images/users/brianGomez.jpeg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile">Nombre usuario: Brian Gomez </a> </strong>
-									Como jugador profesional de Temperley, esas son las mejores y mas facheras zapatillas que use en mucho tiempo.</p>
-							</div>
-						</article>
-						<article>
-							<img src="/images/users/aleVivone.jpeg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile">Nombre usuario: Ale Vivone</a> </strong>
-									Mejores zapatillas que compre en mi vida, para mi vida como programador son las cosas mas comodas que use en mi vida.
-									</p>
-							</div>
-						</article>
-						<article>
-							<img src="/images/users/brianGomez.jpeg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile"> Nombre usuario: Brian Gomez</a> </strong>
-									Como jugador profesional de Temperley, esas son las mejores y mas facheras zapatillas que use en mucho tiempo.</p>
-							</div>
-						</article>
-						<article>
-							<img src="/images/users/aleVivone.jpeg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile">Nombre usuario: Ale Vivone </a> </strong>
-									Mejores zapatillas que compre en mi vida, para mi vida como programador son las cosas mas comodas que use en mi vida.</p>
 							</div>
 						</article>
 						<% } %>
