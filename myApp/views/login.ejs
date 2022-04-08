@@ -15,28 +15,34 @@
 				<h2 class="products-title">Sign In</h2>
 			</div>
 <!-- form para login --> 
-		<form action="/" method="get" class="logInForm">
 
-			<div>
-				<label class= "letraForm"for="mail">E-mail:</label>
-				<input type="email" name="mail" placeholder= "Username" value="">
-			</div>
-
-			<div>
-				<label class= "letraForm" for="password"> Password: </label>
-				<input type="password" name="password" placeholder= "Password" value=""> 
-			</div>
-
-			<div>
+		<div class="wrapper fadeInDown">
+			<div id="formContent">
+			  <!-- Tabs Titles -->
+			  <h2 class="active"> Sign in </h2>
+		  
+			  <!-- Icon -->
+		  
+			  <!-- Login Form -->
+			  <form class="form-especial">
+				<input type="text" id="login" class="fadeIn second" name="login" placeholder="email">
+				<input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
 				<label class= "letraForm" for="checkbox"> Remind me </label>
 				<input type="checkbox" name="recordarme" value= "remindMe" >
+				<hr>
+				<input type="submit" class="fadeIn fourth" value="Log In">
+			  </form>
+		  
+			  <!-- Remind Passowrd -->
+			  <div id="formFooter">
+				<a class="underlineHover" href="#">Forgot Password?</a>
+			  </div>
+		  
 			</div>
+		  </div>
 
-			<div>
-				<button type="submit"> Sign in </button>
-			</div>
-		 
-		</form>
+
+
 <!-- footer -->
 	<%- include('./partials/footer.ejs')  %> 
 <!-- /footer -->

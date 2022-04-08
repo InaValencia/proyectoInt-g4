@@ -96,7 +96,7 @@ const dataBase = {
 
     comments: [
         {
-        user:'Brian_Gomez',
+        user:'ing_Brian_Gomez',
         text: 'Buenisimas zapatillas para flexearlas en Digital House',
         profilePic: '/images/users/brianGomez.jpeg'
         },
@@ -111,7 +111,7 @@ const dataBase = {
         profilePic: '/images/users/sebiProfile.jpeg'
         },
         {
-        user:'Brian_Gomez',
+        user:'ing_Brian_Gomez',
         text: 'Buenisimas zapatillas para flexearlas en Digital House',
         profilePic: '/images/users/brianGomez.jpeg'
         },
