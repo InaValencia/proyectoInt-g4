@@ -5,6 +5,7 @@ const indexController = {
         return res.render('index', {
             user: dataBase.user,
             products: dataBase.products,
+            mostPopular: dataBase.mostPopular,
             logueado: false,
         })
     },
