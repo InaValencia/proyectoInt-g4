@@ -7,6 +7,7 @@ const dataBase = {
         followers: 14250,
         comments: 77,
         profilePic: '/images/users/sebiProfile.jpeg',
+        logueado: true,
     },
 
     products: [

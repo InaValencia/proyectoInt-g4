@@ -6,14 +6,14 @@ const productController = {
             user: dataBase.user,
             products: dataBase.products,
             comments: dataBase.comments,
-            logueado: true,
+            logueado: dataBase.user.logueado,
         })
     },
     showProductAdd: 
     function (req, res) {
         return res.render('product-add', {
             user: dataBase.user,
-            logueado: true,
+            logueado: dataBase.user.logueado,
         })
     }
 } ;

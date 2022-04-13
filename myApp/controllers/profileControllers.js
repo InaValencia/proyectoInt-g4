@@ -5,13 +5,13 @@ const profileController = {
         return res.render('profile', {
             user: dataBase.user,
             products: dataBase.products,
-            logueado: true,
+            logueado: dataBase.user.logueado,
         })
     },
     showProfileEdit: function (req, res) {
         return res.render('profile-edit', {
             user: dataBase.user,
-            logueado: true,
+            logueado: dataBase.user,
         })
     }
 };

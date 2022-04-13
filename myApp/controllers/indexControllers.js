@@ -6,19 +6,19 @@ const indexController = {
             user: dataBase.user,
             products: dataBase.products,
             mostPopular: dataBase.mostPopular,
-            logueado: false,
+            logueado: dataBase.user.logueado,
         })
     },
     showLogin: function (req, res) {
         return res.render('login', {
-                user: dataBase.user,
-                logueado: true,
+            user: dataBase.user,
+            logueado: dataBase.user.logueado,
         })
     },
     showRegister: function (req, res) {
         return res.render('register', {
             user: dataBase.user,
-            logueado: true,
+            logueado: dataBase.user.logueado,
         })
     }
 
