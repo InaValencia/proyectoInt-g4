@@ -9,8 +9,7 @@ const productController = {
             logueado: dataBase.user.logueado,
         })
     },
-    showProductAdd: 
-    function (req, res) {
+    showProductAdd: function (req, res) {
         return res.render('product-add', {
             user: dataBase.user,
             logueado: dataBase.user.logueado,
