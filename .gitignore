@@ -1,3 +1,3 @@
 node_modules/
 .DS_Store
-/myApp/config/config.js
+/myApp/database/config/config.js
