@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const indexController = require('../controllers/indexControllers')
 
-router.get('/', indexController.showIndex);
+router.get('/', indexController.showShoe);
 
 router.get('/login', indexController.showLogin);
 

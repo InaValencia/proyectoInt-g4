@@ -1,4 +1,6 @@
-const dataBase = require('../db/dataBase')
+const dataBase = require('../db/dataBase');
+const db = require('../database/models');
+const op = db.Sequelize.Op
 
 const indexController = {
     showIndex: function (req, res) {
@@ -20,8 +22,21 @@ const indexController = {
             user: dataBase.user,
             logueado: dataBase.user.logueado,
         })
-    }
+    },
+    showShoe : function (req, res) {
+        db.Products.findByPk(1).then(function (result) {
+            console.log(result)
+            let product = {
+                description : result.description,
+                model : result.model,
+                photo : result.photo
+            }
+            return res.render('index', {
+                product : product
+            })
+        })
+    
 
-};
-
-module.exports = indexController;
+}
+}
+module.exports = indexController

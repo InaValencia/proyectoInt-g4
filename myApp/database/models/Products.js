@@ -21,28 +21,20 @@ module.exports = (sequelize, dataTypes) => {
         users_id: {
             type: dataTypes.INTEGER,
 
-        },
-        createdAt: {
-            type: dataTypes.DATE,
-        },
-        updatedAt: {
-            type: dataTypes.DATE,
-        },
-        deletedAt: {
-            type: dataTypes.DATE,
         }
 
     }
 
     let config = {
-        tableName: 'Products',
         timestamps: true,
-        underscored: true,
-
+        createdAt: 'createdAt',
+        updatedAt: 'updatedAt',
+        deletedAt: 'deletedAt'
     }
 
-    const Product = sequelize.define(alias, cols, config);
 
-    return Product;
+    const Products = sequelize.define(alias, cols, config);
+
+    return Products;
 
 }
