@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const searchResultsRouter = require('./routes/search-results');
 const productRouter = require('./routes/products');
 const profileRouter = require('./routes/profile');
+const session = require('express-session');
 
  // hola 
 var app = express();
@@ -29,6 +30,13 @@ app.use('/', indexRouter);
 app.use('/search-results', searchResultsRouter);
 app.use('/products', productRouter);
 app.use('/profile', profileRouter );
+
+//Middelware session
+app.use(session({
+  secret: 'myApp',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
