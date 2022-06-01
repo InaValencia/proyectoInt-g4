@@ -4,12 +4,24 @@ const op = db.Sequelize.Op
 
 const indexController = {
     showIndex: function (req, res) {
-        return res.render('index', {
+        db.Products.findByPk(1).then(function (result) {
+        let product = {
+            description: result.description,
+            model: result.model,
+            photo: result.photo,
+
             user: dataBase.user,
             products: dataBase.products,
             mostPopular: dataBase.mostPopular,
             logueado: dataBase.user.logueado,
+        } 
+        return res.render('index', {
+            product: product
         })
+
+
+        })
+    
     },
     showLogin: function (req, res) {
         return res.render('login', {
@@ -22,21 +34,5 @@ const indexController = {
             user: dataBase.user,
             logueado: dataBase.user.logueado,
         })
-    },
-    showShoe : function (req, res) {
-        db.Products.findByPk(1).then(function (result) {
-            console.log(result)
-            let product = {
-                description : result.description,
-                model : result.model,
-                photo : result.photo
-            }
-            return res.render('index', {
-                product : product
-            })
-        })
-    
-
-}
-}
+    } }
 module.exports = indexController
