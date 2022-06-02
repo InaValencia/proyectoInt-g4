@@ -6,7 +6,7 @@ router.get('/', productController.showProduct)
 
 router.get('/add' , productController.showProductAdd)
 
-router.post('/add', productController.store)
+router.post('/store', productController.store)
 
 
 
