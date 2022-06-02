@@ -1,7 +1,6 @@
 const dataBase = require('../db/dataBase')
 
 const db = require('../database/models');
-const { products } = require('../db/dataBase');
 const product = db.Products
 const op = db.Sequelize.Op
 
@@ -29,7 +28,7 @@ const productController = {
             description: info.description,
             // uploadDate: info.date,
         }
-    products.create(shoe).then((result) => {
+    product.create(shoe).then((result) => {
         return res.redirect('/products')
     }).catch((err) => {
         return res.send('Hay un error' + err)
