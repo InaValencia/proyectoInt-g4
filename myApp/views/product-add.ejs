@@ -27,19 +27,19 @@
 			  <h2 class="active"> Add Product  </h2>
 			  <!-- Icon -->
 		  
-			  <form>
+			  <form action="/product/store" method="POST">
 				<label for="Image of the product" class= "letraForm"> Image of the product: </label>
 				<input type="file" name="img" placeholder= "image of the product" value="">
 				<hr>
-				<label for="Name of the product" class= "letraForm"> Name of the product: </label>
-				<input type="text" name="name of the product" placeholder= "name of the product" value=""> 
+				<label for="Name of the product" class= "letraForm"> Model: </label>
+				<input type="text" name="model" placeholder= "name of the product" value=""> 
 				<hr>
 				<label for="Description" class= "letraForm"> Description </label>
 				<input type="text" name="descripction" placeholder="description">
 				<hr>
 				<div>
 					<label for="age" class= "letraForm"> Upload date: </label>
-					<input type="date" name="birthday" placeholder= "Upload date" value="">
+					<input type="date" name="date" placeholder= "Upload date" value="">
 				</div>
 				<hr>
 				<input type="submit" class="fadeIn fourth" value="ADD">
