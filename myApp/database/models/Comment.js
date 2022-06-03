@@ -1,3 +1,5 @@
+const { comments } = require("../../db/dataBase");
+
 module.exports = (sequelize, dataTypes) => {
 
     let alias = 'Comment'
@@ -29,6 +31,13 @@ module.exports = (sequelize, dataTypes) => {
     }
 
     const Comment = sequelize.define(alias, cols, config);
+
+     Comment.associate = function (models) {
+        Comment.belongsTo(models.Products, {
+            as: 'product',
+            foreignKey : 'product_id'
+        })
+    }
 
     return Comment;
 

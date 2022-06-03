@@ -1,3 +1,6 @@
+const { useColors } = require("debug/src/browser");
+const Products = require("./Products");
+
 module.exports = (sequelize, dataTypes) => {
 
     let alias = 'User'
@@ -33,6 +36,14 @@ module.exports = (sequelize, dataTypes) => {
     }
 
     const User = sequelize.define(alias, cols, config);
+
+    User.associate = function (models) {
+        User.hasMany(models.Products, {
+            as: 'product',
+            foreignKey : 'users_id'
+        })
+    }
+
 
     return User;
 
