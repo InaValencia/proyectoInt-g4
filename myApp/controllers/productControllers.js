@@ -21,20 +21,20 @@ const productController = {
     },
 
     store: (req, res) => {
-    let info = req.body;
-    let shoe = {
-        img: info.img,
-        model: info.model,
-        description: info.description,
-        // uploadDate: info.date,
-        }
-    product.create(shoe)
-    .then((result) => {
-        return res.redirect('/products')
-    }).catch((err) => {
-        return res.send('Hay un error' + err)
-    });
-    },
+        let info = req.body;
+        let shoe = {
+            photo: info.photo,
+            model: info.model,
+            description: info.description,
+            }
+        product.create(shoe)
+        .then((result) => {
+            return res.redirect('/products')
+        }).catch((err) => {
+            return res.send('Hay un error' + err)
+        });
+
+}
 
 } ;
 

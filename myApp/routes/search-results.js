@@ -4,7 +4,7 @@ const searchResultsController = require('../controllers/search-resultsController
 
 
 
-router.get('/search-results', searchResultsController.showSearchResults);
+router.get('/', searchResultsController.findShoes);
 
 
 

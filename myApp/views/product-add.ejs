@@ -26,22 +26,17 @@
 			  <!-- Tabs Titles -->
 			  <h2 class="active"> Add Product  </h2>
 
-			  <!-- Icon -->
+			  <!-- Icon -->c
 		  
-			  <form action="/product/store" method="POST">
-				<label for="Image of the product" class= "letraForm"> Image of the product: </label>
-				<input type="text" name="img" placeholder= "image of the product" value="">
-				<hr>
-				<label for="Name of the product" class= "letraForm"> Model: </label>
+			  <form action="/products/store" method="POST" enctype="multipart/form-data">
+				<label for="model" class= "letraForm"> Model: </label>
 				<input type="text" name="model" placeholder= "name of the product" value=""> 
 				<hr>
-				<label for="Description" class= "letraForm"> Description </label>
-				<input type="text" name="descripction" placeholder="description">
+				<label for="description" class= "letraForm"> Description </label>
+				<input type="text" name="description" placeholder="description">
 				<hr>
-				<div>
-					<label for="age" class= "letraForm"> Upload date: </label>
-					<input type="date" name="date" placeholder= "Upload date" value="">
-				</div>
+				<label for="photo" class= "letraForm"> Image of the product: </label>
+				<input type="file" name="photo" placeholder= "photo" value="">
 				<hr>
 				<input type="submit" class="fadeIn fourth" value="ADD">
 			  </form>
