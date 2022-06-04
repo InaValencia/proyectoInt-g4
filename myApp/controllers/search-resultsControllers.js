@@ -12,15 +12,17 @@ const searchResultsController = {
     },*/
     findShoes : (req, res) => {
         let busqueda = req.params.search;
-        Products.findAll({
+        db.Products.findAll({
             where: [
                 { model : {[op.like] : `% ${busqueda} %` }}
             ]
         }).then((result) => {
-            res.send('search-results', busqueda)
+            res.send('search-results', {
+                busqueda : busqueda
+            })
 
         }).catch((err) => {
-            
+            console.log(err);
         });
     }
 
