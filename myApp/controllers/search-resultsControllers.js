@@ -1,5 +1,6 @@
 const dataBase = require('../db/dataBase');
 const db = require('../database/models/');
+const { products } = require('../db/dataBase');
 const op = db.Sequelize.Op;
 
 const searchResultsController = {
@@ -10,7 +11,7 @@ const searchResultsController = {
             logueado: dataBase.user.logueado,
         })
     },*/
-    findShoes : (req, res) => {
+    /* findShoes : (req, res) => {
         let busqueda = req.params.search;
         db.Products.findAll({
             where: [
@@ -21,6 +22,16 @@ const searchResultsController = {
                 busqueda : busqueda
             })
 
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, */
+
+    findProduct : (req, res) => {
+        db.Movie.findAll(
+            { where: { model : { [op.like] : "%" + req.query.search }}}
+        ).then((result) => {
+            res.render('search-results', { productsEncontrados : result} )
         }).catch((err) => {
             console.log(err);
         });
