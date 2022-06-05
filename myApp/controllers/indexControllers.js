@@ -34,5 +34,7 @@ const indexController = {
             user: dataBase.user,
             logueado: dataBase.user.logueado,
         })
-    } }
+    }, 
+
+}
 module.exports = indexController

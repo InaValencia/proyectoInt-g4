@@ -6,11 +6,7 @@
 
 <body>
 	<!-- Include Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
-	<% } %>
+
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -29,8 +25,8 @@
 		  
 			  <!-- Login Form -->
 			<form class="form-especial" action="/products/store" method="POST" enctype="multipart/form-data">
-				<input type="text" id="login" class="fadeIn second" name="mail" placeholder="email">
-				<input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+				<input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
+				<input type="password" id="password" class="fadeIn third" name="contrasena" placeholder="password">
 				<hr>
 				<label class= "letraForm" for="checkbox"> Remind me </label>
 				<input type="checkbox" name="recordarme" value= "remindMe" >

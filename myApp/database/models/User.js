@@ -19,12 +19,13 @@ module.exports = (sequelize, dataTypes) => {
         },
         apellido: {
             type: dataTypes.STRING
-
         },
         contrasena: {
             type: dataTypes.STRING,
-
         },
+        foto : {
+            type: dataTypes.STRING,
+        }
 
     }
 

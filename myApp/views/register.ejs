@@ -6,11 +6,7 @@
 
 <body>
 	<!-- Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
-	<% } %>
+
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -28,13 +24,13 @@
 			  
 				  <!-- Login Form -->
 				<form class="form-especial" action="/products/store" method="POST" enctype="multipart/form-data">
-					<input type="text" id="login" name="mail" placeholder="mail">
+					<input type="text" id="login" name="email" placeholder="mail">
 					<hr>
-					<input type="text" id="name" name="name" placeholder="name">
+					<input type="text" id="name" name="nombre" placeholder="name">
 					<hr>
-					<input type="text" id="apellido" name="surname" placeholder="apellido">
+					<input type="text" id="apellido" name="apellido" placeholder="apellido">
 					<hr>
-					<input type="password" id="password" name="password" placeholder="password">
+					<input type="password" id="password" name="contrasena" placeholder="password">
 					<hr>
 					<label class= "letraForm" for="profilePic"> Choose a profile pic: </label>
 					<input type="file" name="photo" placeholder= "Profile pic" value="">

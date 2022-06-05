@@ -1,7 +1,7 @@
 const dataBase = require('../db/dataBase');
 const db = require('../database/models');
-const user = db.User
 
+const user = db.User
 const bcrypt = require('bcryptjs');
 
 const profileController = {
@@ -12,6 +12,13 @@ const profileController = {
             logueado: dataBase.user.logueado,
         })
     },
+    showProfileEdit: function (req, res) {
+        return res.render('profile-edit', {
+            user: dataBase.user,
+            logueado: dataBase.user,
+        })
+    },
+
     login: function (req, res) {
         return res.render('login')
     },
@@ -19,7 +26,7 @@ const profileController = {
         let info = req.body
         let filtro = {
             where: [{
-                email: info.mail
+                email: info.email
             }]
         };
 
@@ -27,14 +34,14 @@ const profileController = {
             .then((result) => {
 
                 if (result != null) {
-                    let passEncriptada = bcrypt.compareSync(info.password, result.password)
+                    let passEncriptada = bcrypt.compareSync(info.contrasena, result.contrasena)
                     if (passEncriptada) {
                         return res.redirect('/')
                     } else {
-                        return res.send('existe el mail ' + result.mail + 'pero la clave es incorrecta')
+                        return res.send('existe el email ' + result.email + 'pero la clave es incorrecta')
                     }
                 } else {
-                    return res.send('no existe el mail ' + info.mail)
+                    return res.send('no existe el email ' + info.email)
                 }
 
 
@@ -46,36 +53,27 @@ const profileController = {
 
     },
     register: function (req, res) {
-        return res.render('/register')
+        return res.render('register')
 
     },
     procesarRegister : function (req, res ) {
         let info = req.body; 
         let usuario = {
-            mail : info.mail,
-            name : info.name,
-            surname : info.surname,
-            password : bcrypt.hashSync(info.password, 10),
-            photo : info.photo,
+            email : info.email,
+            nombre : info.nombre,
+            apellido : info.apellido,
+            contrasena : bcrypt.hashSync(info.password, 10),
+            foto : info.foto,
             
         } 
         user.create(usuario)
         .then((result) => {
-            return res.redirect('/login')
+            return result.redirect('login')
         }).catch((err) => {
             
         });
     },
 
-
-
-
-    showProfileEdit: function (req, res) {
-        return res.render('profile-edit', {
-            user: dataBase.user,
-            logueado: dataBase.user,
-        })
-    }
 };
 
 module.exports = profileController;
