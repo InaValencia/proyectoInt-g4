@@ -12,7 +12,7 @@ const productRouter = require('./routes/products');
 const profileRouter = require('./routes/profile');
 const session = require('express-session');
 
- // hola 
+
 var app = express();
 
 // view engine setup
