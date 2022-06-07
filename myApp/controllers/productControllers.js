@@ -22,10 +22,10 @@ const productController = {
 
     store: (req, res) => {
         let info = req.body;
-        console.log(req.body);
-        console.log(req.body.description);
+        let imgProduct = req.file.filename;
+
         let shoe = {
-            photo: info.photo,
+            photo: imgProduct,
             model: info.model,
             description: info.description,    
         }; 

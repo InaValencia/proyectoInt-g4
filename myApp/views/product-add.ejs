@@ -28,7 +28,7 @@
 
 			  <!-- Icon -->
 		  
-			  <form action="/products/store" method="POST">
+			  <form action="/products/store" method="POST" enctype="multipart/form-data">
 				<label for="model" class= "letraForm"> Model: </label>
 				<input type="text" name="model" placeholder= "name of the product" value=""> 
 				<hr>
@@ -36,7 +36,7 @@
 				<input type="text" name="description" placeholder="description">
 				<hr>
 				<label for="photo" class= "letraForm"> Image of the product: </label>
-				<input type="file" name="photo" placeholder= "photo" value="">
+				<input type="file" name="imgProduct" placeholder= "photo" value="">
 				<hr>
 				<input type="submit" class="fadeIn fourth" value="ADD">
 			  </form>
