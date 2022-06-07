@@ -58,19 +58,19 @@ const profileController = {
     },
     procesarRegister : function (req, res ) {
         let info = req.body; 
+        console.log(info);
         let usuario = {
             email : info.email,
             nombre : info.nombre,
             apellido : info.apellido,
-            contrasena : bcrypt.hashSync(info.password, 10),
+            contrasena : bcrypt.hashSync(info.contrasena, 10),
             foto : info.foto,
-            
-        } 
+        }
         user.create(usuario)
         .then((result) => {
-            return result.redirect('login')
+            return res.redirect('/profile/login')
         }).catch((err) => {
-            
+            console.log(err);
         });
     },
 

@@ -22,11 +22,15 @@ const productController = {
 
     store: (req, res) => {
         let info = req.body;
+        console.log(req.body);
+        console.log(req.body.description);
         let shoe = {
             photo: info.photo,
             model: info.model,
-            description: info.description,
-            }
+            description: info.description,    
+        }; 
+
+
         product.create(shoe)
         .then((result) => {
             return res.redirect('/products')
