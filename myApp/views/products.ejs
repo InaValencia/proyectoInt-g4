@@ -7,41 +7,26 @@
 
 <body>
 	<!-- Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
-	<% } %>
+
 	<!-- /Header -->
 	
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= products[1].model %> </h2> 
+			<h2 class="products-title"><%= products.model %> </h2> 
 			<p class="product-detail-description">
-				<a class= "editButton" href="/products/add">Editar</a>
+				<a class= "editButton" href="/products/id/<%=products.id%>/edit">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= products[1].image%>" alt="" class="product-detail-img">
+					<img src="/images/products/<%= products.photo%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= products[1].description  %> </p>
+						<%= products.description  %> </p>
 				</article>
 				<div class="col-12 col-lg-4">
-					<section class="comments">
-						<% for (let i = 0; i < comments.length; i++) { %>
-						<article>
-							<img src= <%= comments[i].profilePic %> alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile"><%= comments[i].user%> </a> </strong>
-								<%= comments[i].text %> </p>
-							</div>
-						</article>
-						<% } %>
-					</section>
+			
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
