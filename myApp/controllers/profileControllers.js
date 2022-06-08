@@ -36,6 +36,9 @@ const profileController = {
                 if (result != null) {
                     let passEncriptada = bcrypt.compareSync(info.contrasena, result.contrasena)
                     if (passEncriptada) {
+
+                        req.session.user = result.dataValues;
+                        
                         return res.redirect('/')
                     } else {
                         return res.send('existe el email ' + result.email + 'pero la clave es incorrecta')
@@ -56,22 +59,22 @@ const profileController = {
         return res.render('register')
 
     },
-    procesarRegister : function (req, res ) {
-        let info = req.body; 
+    procesarRegister: function (req, res) {
+        let info = req.body;
         console.log(info);
         let usuario = {
-            email : info.email,
-            nombre : info.nombre,
-            apellido : info.apellido,
-            contrasena : bcrypt.hashSync(info.contrasena, 10),
-            foto : info.foto,
+            email: info.email,
+            nombre: info.nombre,
+            apellido: info.apellido,
+            contrasena: bcrypt.hashSync(info.contrasena, 10),
+            foto: info.foto,
         }
         user.create(usuario)
-        .then((result) => {
-            return res.redirect('/profile/login')
-        }).catch((err) => {
-            console.log(err);
-        });
+            .then((result) => {
+                return res.redirect('/profile/login')
+            }).catch((err) => {
+                console.log(err);
+            });
     },
 
 };

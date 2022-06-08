@@ -36,7 +36,16 @@ app.use(session({
   secret: 'myApp',
   resave: false,
   saveUninitialized: true
-}))
+}));
+
+//Middelware session
+app.use(function (req, res, next) {
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user
+    return next();
+  }
+  return next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
