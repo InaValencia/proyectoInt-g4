@@ -1,3 +1,4 @@
 node_modules/
 .DS_Store
 /myApp/database/config/config.js
+/myapp/public/images

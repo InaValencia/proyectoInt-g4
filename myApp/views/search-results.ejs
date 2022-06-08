@@ -6,29 +6,27 @@
 
 <body>
 	<!-- Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
-	<% } %>
+
+
+
 	<!-- /Header -->
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Browse results for: </h2>
+				<h2 class="products-title"> Browse results for: </h2>
 
-				<% for (let i = 0; i < product.products.length; i++) { %>
+				<% for (let i = 0; i < products.length; i++) { %>
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
 							<a href="/products">
 								<figure class="product-box_image">
-									<img src="<%= product.products[i].image %>"  alt="shoes">
+									<img src="<%= products[i].image %>"  alt="shoes">
 								</figure>
 								<article class="product-box_data">
-									<h2> <%= product.products[i].model  %>  </h2>
-									<p> <%= product.products[i].description  %> </p>
+									<h2> <%= products[i].model  %>  </h2>
+									<p> <%= products[i].description  %> </p>
 									<p>Comments: 5</p>
 								</article>
 							</a>

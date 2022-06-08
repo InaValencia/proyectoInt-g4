@@ -6,15 +6,11 @@
 <%- include('./partials/head')  %> 
 
 <body>
-<h1 style="color:red"> <%= product.model %> </h1>
-<h2 style="color:red"> <%= product.description %> </h2>
 
 	<!-- Include Header -->
-	<%if (product.logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
-	<% } %>
+
+
+
 	<!-- Banner -->
 	<div class="banner">
 		<img src="images/bannerJustHype.png" alt="Banner de ofertas">
@@ -30,16 +26,16 @@
 				<h2 class="products-title">New Releases</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% for (let i = 0; i < product.products.length; i++) { %>
+			<% for (let i = 0; i < products.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
 					<a href="/products">
 						<figure class="product-box_image">
-							<img src="<%= product.products[i].image %>"  alt="shoes">
+							<img src="/images/products/<%= products[i].photo %>"  alt="shoes">
 						</figure>
 						<article class="product-box_data">
-							<h2> <%= product.products[i].model  %>  </h2>
-							<p> <%= product.products[i].description  %> </p>
+							<h2> <%= products[i].model  %>  </h2>
+							<p> <%= products[i].description  %> </p>
 							<p>Comments: 5</p>
 						</article>
 					</a>
@@ -56,16 +52,16 @@
 				<h2 class="products-title">Most popular</h2>
 			</div>
 			
-			<% for (let i = 0; i < product.mostPopular.length; i++) { %>
+			<% for (let i = 0; i < products.length; i++) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<a href="/products">
 							<figure class="product-box_image">
-								<img src="<%= product.mostPopular[i].image %>"  alt="shoes">
+								<img src="/images/products/<%= products[i].photo%>"  alt="shoes">
 							</figure>
 							<article class="product-box_data">
-								<h2> <%= product.mostPopular[i].model  %>  </h2>
-								<p> <%= product.mostPopular[i].description  %> </p>
+								<h2> <%= products[i].model  %>  </h2>
+								<p> <%= products[i].description  %> </p>
 								<p>Comentarios: 12</p>
 							</article>
 						</a>
