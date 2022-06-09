@@ -43,9 +43,8 @@ app.use(session({
 //Middelware session
 app.use(function (req, res, next) {
   if (req.session.user != undefined) {
-    
     res.locals.user = req.session.user
-    
+   
     return next();
   }
   return next();
@@ -66,8 +65,7 @@ app.use(function (req, res, next) {
 
       }).catch(function (err) {
 console.log(err);
-      
-})
+      })
 
   } else {
 
