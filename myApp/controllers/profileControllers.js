@@ -38,7 +38,11 @@ const profileController = {
                     if (passEncriptada) {
 
                         req.session.user = result.dataValues;
-                        
+
+                        if (req.body.recordarme != undefined) {
+                            res.cookie('user_id', result.dataValues.id, {maxAge : 1000 * 60 * 10 } )
+                        }
+
                         return res.redirect('/')
                     } else {
                         return res.send('existe el email ' + result.email + 'pero la clave es incorrecta')

@@ -11,6 +11,8 @@ const searchResultsRouter = require('./routes/search-results');
 const productRouter = require('./routes/products');
 const profileRouter = require('./routes/profile');
 const session = require('express-session');
+const db = require('./database/models');
+const user = db.User
 
 
 var app = express();
@@ -29,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/search-results', searchResultsRouter);
 app.use('/products', productRouter);
-app.use('/profile', profileRouter );
+app.use('/profile', profileRouter);
 
 //Middelware session
 app.use(session({
@@ -41,19 +43,46 @@ app.use(session({
 //Middelware session
 app.use(function (req, res, next) {
   if (req.session.user != undefined) {
+    
     res.locals.user = req.session.user
+    
     return next();
   }
   return next();
 });
 
+//Middelware cookie
+app.use(function (req, res, next) {
+  if (req.cookies.user_id != undefined && req.session.user == undefined) {
+    let idUsuarioEnCookie = req.session.user_id
+
+    db.User.findByPk(idUsuarioEnCookie)
+      .then(function (user) {
+        req.session.user = user.dataValues
+
+        res.locals.user = user.dataValues
+
+        return next()
+
+      }).catch(function (err) {
+console.log(err);
+      
+})
+
+  } else {
+
+    return next()
+  }
+
+})
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
