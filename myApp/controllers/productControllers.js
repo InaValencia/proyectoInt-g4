@@ -9,6 +9,7 @@ const productController = {
         let id = req.params.id;
         product.findByPk(id).then((result) => {
             let shoe = {
+                id: result.id,
                 photo: result.photo,
                 model: result.model,
                 description: result.description,    
@@ -18,10 +19,6 @@ const productController = {
         }).catch((err) => {
             console.log(err);
         });
-
-        /* return res.render('products', {
-
-        }) */
     },
     showProductAdd: function (req, res) {
         return res.render('product-add', {
@@ -50,11 +47,43 @@ const productController = {
 
     },
     showProductEdit: (req, res) => {
-        return res.render('product-edit', {
-            user: dataBase.user,
-            logueado: dataBase.user.logueado,
-        })
+    let id = req.params.id;
+    product.findByPk(id).then((result) => {
+    let shoe = {
+        id: result.id,
+        photo: result.photo,
+        model: result.model,
+        description: result.description,  
     }
+    return res.render('product-edit', {products : shoe})
+    }).catch((err) => {
+        console.log(err);
+    });
+    },
+    updateProduct: (req, res) => {
+        let info = req.body;
+        let imgProduct = req.file.filename;
+
+        let shoe = {
+            photo: imgProduct,
+            model: info.model,
+            description: info.description,  
+        }
+
+        let filtro = {
+            where : {
+                id : req.params
+            }
+        };
+        console.log(shoe);
+        product.update(shoe, filtro)
+        .then((result) => {
+            return res.redirect('/')
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
 
 } ;
 

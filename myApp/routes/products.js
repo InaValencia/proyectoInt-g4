@@ -17,6 +17,7 @@ let storage = multer.diskStorage({
 
 let upload = multer({storage : storage})
 
+// Ruta para mostrar una zapatilla
 
 router.get('/id/:id', productController.showProduct)
 
@@ -28,9 +29,9 @@ router.post('/store', upload.single('imgProduct'), productController.store)
 
 // Rutas para EDITAR una zapatilla
 
-router.get('/id/:id/edit' , productController.showProductEdit)
+router.get('/edit/:id' , productController.showProductEdit)
 
-router.post('/edited', upload.single('imgProduct'), productController.store)
+router.post('/edited', upload.single('imgProduct'), productController.updateProduct)
 
 
 module.exports = router;
