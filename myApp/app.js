@@ -17,6 +17,8 @@ const user = db.User
 
 var app = express();
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -27,17 +29,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//CUANDO EL USUARIO REQUIERE / ALGO... 
-app.use('/', indexRouter);
-app.use('/search-results', searchResultsRouter);
-app.use('/products', productRouter);
-app.use('/profile', profileRouter);
-
 //Middelware session
 app.use(session({
-  secret: 'myApp',
-  resave: false,
-  saveUninitialized: true
+  secret : 'myApp',
+  resave : false,
+  saveUninitialized : true
 }));
 
 //Middelware session
@@ -51,28 +47,32 @@ app.use(function (req, res, next) {
 });
 
 //Middelware cookie
-app.use(function (req, res, next) {
-  if (req.cookies.user_id != undefined && req.session.user == undefined) {
-    let idUsuarioEnCookie = req.session.user_id
+/* Middleware de cookies */
+app.use(function(req, res, next) {
+  if (req.cookies.userId != undefined && req.session.user == undefined) {
 
+    let idUsuarioEnCookie = req.cookies.userId;
+    
     db.User.findByPk(idUsuarioEnCookie)
-      .then(function (user) {
-        req.session.user = user.dataValues
-
-        res.locals.user = user.dataValues
-
-        return next()
-
-      }).catch(function (err) {
-console.log(err);
-      })
-
+    .then((user) => {
+      req.session.user = user.dataValues;
+      res.locals.user  = user.dataValues;
+      return next();
+    }).catch((err) => {
+      console.log(err);
+    });
   } else {
-
-    return next()
+    return next();
   }
-
 })
+
+//CUANDO EL USUARIO REQUIERE / ALGO... 
+app.use('/', indexRouter);
+app.use('/search-results', searchResultsRouter);
+app.use('/products', productRouter);
+app.use('/profile', profileRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

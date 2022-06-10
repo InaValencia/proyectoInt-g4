@@ -3,14 +3,13 @@ const db = require('../database/models');
 
 const user = db.User
 const bcrypt = require('bcryptjs');
+const User = require('../database/models/User');
 
 const profileController = {
     showProfile: function (req, res) {
-        return res.render('profile', {
-            user: dataBase.user,
-            products: dataBase.products,
-            logueado: dataBase.user.logueado,
-        })
+
+        
+        return res.render('profile')
     },
     showProfileEdit: function (req, res) {
         return res.render('profile-edit', {
@@ -40,14 +39,16 @@ const profileController = {
                         req.session.user = result.dataValues;
 
                         if (req.body.recordarme != undefined) {
-                            res.cookie('user_id', result.dataValues.id, {maxAge : 1000 * 60 * 10 } )
-                        }
+                            res.cookie('userId', result.dataValues.id, {maxAge : 1000 * 60 * 10 } )
+                        } 
 
-                        return res.redirect('/')
+                        return res.redirect("/profile/")
+                    
                     } else {
                         return res.send('existe el email ' + result.email + 'pero la clave es incorrecta')
                     }
                 } else {
+                    
                     return res.send('no existe el email ' + info.email)
                 }
 
@@ -55,7 +56,7 @@ const profileController = {
 
 
             }).catch((err) => {
-
+                console.log(err);
             });
 
     },

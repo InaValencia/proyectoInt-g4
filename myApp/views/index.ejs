@@ -8,15 +8,17 @@
 <body>
 
 	<!-- Include Header -->
-
-
+	<% if (locals.user != undefined) { %>
+			<%- include('./partials/headerLogueado')  %> 
+	<% } else{%>
+			<%- include('./partials/headerNoLogueado')  %> 
+	<% } %> 
 
 	<!-- Banner -->
 	<div class="banner">
 		<img src="images/bannerJustHype.png" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
-
 
 	<!-- acá voy a hacer un bucle que recorra el array de productos y muestre un div por cada producto -->
 	<!-- Novedades -->

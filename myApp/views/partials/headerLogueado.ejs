@@ -23,6 +23,10 @@
 				</a>
 			</div>
 		</div>
+		<h3>
+			<p> Bienvenido <%=locals.user.nombre%> 
+			</p>
+		</h3>
 
 		<button class="btn-toggle-navbar">
 			<i class="fas fa-bars"></i>
@@ -37,11 +41,7 @@
 			<ul class="right-navbar">
 				<li><a href="/profile">
 
-						<% if (locals.user !=undefined) { %>
-							<p> Bienvenido <%= user.nombre %>
-							</p>
-
-							<% } %> <i class="fas fa-user"></i>
+					<i class="fas fa-user"></i>
 					</a>
 				</li>
 				<li>
