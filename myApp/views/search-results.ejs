@@ -5,7 +5,12 @@
 <%- include('./partials/head')  %> 
 
 <body>
-	<!-- Header -->
+	<!-- Header -->	<% if (locals.user != undefined) { %>
+			<%- include('./partials/headerLogueado')  %> 
+			<% } else{%>
+					<%- include('./partials/headerNoLogueado')  %> 
+			<% } %> 
+			
 
 
 
@@ -22,7 +27,7 @@
 						<section class="product-box">
 							<a href="/products">
 								<figure class="product-box_image">
-									<img src="<%= products[i].image %>"  alt="shoes">
+									<img src="/images/products/<%= products[i].photo %>"  alt="shoes">
 								</figure>
 								<article class="product-box_data">
 									<h2> <%= products[i].model  %>  </h2>

@@ -27,18 +27,25 @@ const searchResultsController = {
         });
     }, */
 
-    findProduct : (req, res) => {
-        let palabraBuscada = req.query.search
-        product.findAll(
-            { where : { model : { [op.like] : "%" + palabraBuscada + "+"}} }
-        ).then((result) => {
-            // res.render('search-results', { products : result } )
+    findProduct: (req, res) => {
+        let palabraBuscada = req.query.search;
+        let filtro ={
+            where :{
+             [op.or]: [
+               { model: { [op.like]: `%${ palabraBuscada}%` } },
+               { description: { [op.like]: `%${ palabraBuscada}%` } }
+             ]
+           }
+           }
+      
+        product.findAll(filtro).then((result) => {
+            res.render('search-results', { products : result } )
             res.send(result)
         }).catch((err) => {
             console.log(err);
         });
     }
 
-} ;
+};
 
 module.exports = searchResultsController;

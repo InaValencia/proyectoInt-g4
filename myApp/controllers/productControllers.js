@@ -63,7 +63,7 @@ const productController = {
     updateProduct: (req, res) => {
         let info = req.body;
         let imgProduct = req.file.filename;
-
+        console.log(req.params);
         let shoe = {
             photo: imgProduct,
             model: info.model,
@@ -72,10 +72,11 @@ const productController = {
 
         let filtro = {
             where : {
-                id : req.params
+                id : req.params.id
             }
         };
         console.log(shoe);
+        
         product.update(shoe, filtro)
         .then((result) => {
             return res.redirect('/')

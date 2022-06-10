@@ -6,11 +6,11 @@
 
 <body>
 	<!-- Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
-	<% } %>
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado')  %> 
+<% } else{%>
+		<%- include('./partials/headerNoLogueado')  %> 
+<% } %> 
 	<!-- /Header -->
 
 	<!-- Novedades -->
