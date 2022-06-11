@@ -40,7 +40,6 @@ const searchResultsController = {
       
         product.findAll(filtro).then((result) => {
             res.render('search-results', { products : result } )
-            res.send(result)
         }).catch((err) => {
             console.log(err);
         });

@@ -1,8 +1,8 @@
 const dataBase = require('../db/dataBase')
-
 const db = require('../database/models');
 const product = db.Products
 const op = db.Sequelize.Op
+const comment = db.Comment
 
 const productController = {
     showProduct: (req, res) => {
@@ -40,7 +40,7 @@ const productController = {
 
         product.create(shoe)
         .then((result) => {
-            return res.redirect('/products')
+            return res.redirect('/')
         }).catch((err) => {
             return res.send('Hay un error' + err)
         });
@@ -83,8 +83,30 @@ const productController = {
         }).catch((err) => {
             console.log(err);
         });
-    }
+    },
+     deleteProduct: (req, res) => {
+        let id = req.params
+        product.destroy(
+            {
+                where: {
+                    id : id
+                }
+            }
+        )
+     },
 
+    procesarComments : (req, res) => {
+        let info = req.body
+        let comentario = {
+            comentario : info.comentario
+        }
+        comment.create(comentario)
+        .then((result) => {
+            return res.redirect('/products')
+        }).catch((err) => {
+            console.log(err);
+        });
+    },
 
 } ;
 

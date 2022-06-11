@@ -9,9 +9,9 @@
 	<!-- Header -->
 	<% if (locals.user != undefined) { %>
 		<%- include('./partials/headerLogueado')  %> 
-<% } else{%>
+	<% } else{%>
 		<%- include('./partials/headerNoLogueado')  %> 
-<% } %> 
+	<% } %> 
 	<!-- /Header -->
 	
 	<!-- product detail -->
@@ -19,7 +19,11 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= products.model %> </h2> 
 			<p class="product-detail-description">
-				<a class= "editButton" href="/products/edit/<%=products.id %>">Editar</a>
+				<a class= "editButton" href="/products/edit/<%=products.id%>">Editar</a>
+			</p>
+
+			<p class="product-detail-description">
+				<a class= "editButton" href="/products/delete/<%=products.id%>">Eliminar</a>
 			</p>
 		</div>
 		<div class="product-detail">
@@ -30,9 +34,22 @@
 						<%= products.description  %> </p>
 				</article>
 				<div class="col-12 col-lg-4">
-			
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+
+				<section class="comments">
+						<% for (let i = 0; i < 4; i++) { %>
+						<article>
+							<img src= "/images/users/aleVivone.jpeg" alt="img perfil">
+							<div class="data">
+								<p class="user">
+								<strong> <a href="/profile">Username: </a> </strong>
+								 comentario 
+								</p>
+							</div>
+						</article>
+						<% } %>
+				</section>
+					<form class="form" action="/products/comentario" method="POST">
+						<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
 					<hr>
