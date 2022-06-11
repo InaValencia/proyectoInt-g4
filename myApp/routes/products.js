@@ -19,7 +19,7 @@ let upload = multer({storage : storage})
 
 // Ruta para mostrar una zapatilla
 
-router.get('/id/:id', productController.showProduct)
+router.get('/id/:id', productController.showProduct, productController.showComments)
 
 // Rutas para eliminar una zapatilla 
 router.post('/delete/:id', productController.deleteProduct)
@@ -35,7 +35,7 @@ router.get('/edit/:id' , productController.showProductEdit)
 
 router.post('/edit/:id', upload.single('imgProduct'), productController.updateProduct)
 
-// Rutas para eliminar una zapatilla 
+// Rutas para mostrar un comentario
 
 // Rutas para agregar un comentario
 

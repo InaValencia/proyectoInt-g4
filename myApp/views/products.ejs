@@ -18,13 +18,17 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= products.model %> </h2> 
+			<% if (locals.user != undefined) { %> <!-- aca en realidad hay que hacer que locals.user.id sea == a al id de quien realizo el comentario -->
 			<p class="product-detail-description">
-				<a class= "editButton" href="/products/edit/<%=products.id%>">Editar</a>
+				<a class= "editButton" href="/products/edit/<%=products.id %>">Editar</a>
 			</p>
+			<% } %> 
 
+			<% if (locals.user != undefined) { %>
 			<p class="product-detail-description">
 				<a class= "editButton" href="/products/delete/<%=products.id%>">Eliminar</a>
 			</p>
+			<% } %> 
 		</div>
 		<div class="product-detail">
 			<div class="row">

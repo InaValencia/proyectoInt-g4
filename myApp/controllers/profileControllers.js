@@ -39,7 +39,7 @@ const profileController = {
                         req.session.user = result.dataValues;
 
                         if (req.body.recordarme != undefined) {
-                            res.cookie('userId', result.dataValues.id, {maxAge : 1000 * 60 * 10 } )
+                            res.cookie('userId', result.dataValues.id, {maxAge : 1000 * 60 * 100 } )
                         } 
 
                         return res.redirect("/profile/")

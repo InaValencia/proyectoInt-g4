@@ -85,16 +85,18 @@ const productController = {
         });
     },
      deleteProduct: (req, res) => {
-        let id = req.params
-        product.destroy(
-            {
-                where: {
-                    id : id
-                }
-            }
-        )
-     },
+        product.destroy({
+            where : { 
+                id : req.params.id}
+        })
+        .then((result) => {
+            console.log(result);
+            res.redirect('/')
+        }).catch((err) => {
+            console.log(err);
+        });
 
+     },
     procesarComments : (req, res) => {
         let info = req.body
         let comentario = {
@@ -107,6 +109,18 @@ const productController = {
             console.log(err);
         });
     },
+    showComments : (req, res) => {
+        let id = req.params.id;
+        comment.findByPk(id).then((result) => {
+            let comentario = {
+                comentario: result.comentario, 
+            }
+        return res.render('products', {comentarios : comentario})
+        }).catch((err) => {
+            console.log(err);
+        });
+    },
+    
 
 } ;
 
