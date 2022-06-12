@@ -35,6 +35,8 @@ router.get('/register', profileController.register)
 
 router.post('/register', upload.single('imgPerfil'), profileController.procesarRegister)
 
+//logout
+router.get('/logout', profileController.logout)
 
 
 

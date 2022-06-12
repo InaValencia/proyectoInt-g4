@@ -7,8 +7,7 @@ const User = require('../database/models/User');
 
 const profileController = {
     showProfile: function (req, res) {
-
-        
+ 
         return res.render('profile')
     },
     showProfileEdit: function (req, res) {
@@ -51,14 +50,9 @@ const profileController = {
                     
                     return res.send('no existe el email ' + info.email)
                 }
-
-
-
-
             }).catch((err) => {
                 console.log(err);
-            });
-
+            });     
     },
     register: function (req, res) {
         return res.render('register')
@@ -82,7 +76,11 @@ const profileController = {
                 console.log(err);
             });
     },
-
+    logout: (req,res) => {
+        req.session.destroy();
+        res.clearCookie('userId');
+        return res.redirect('/')
+    }
 };
 
 module.exports = profileController;
