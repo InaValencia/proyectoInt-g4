@@ -7,8 +7,19 @@ const User = require('../database/models/User');
 
 const profileController = {
     showProfile: function (req, res) {
- 
-        return res.render('profile')
+        let id = req.params.id;
+        user.findByPk(id)
+        .then((result) => {
+            let profile = {
+                email: result.email,
+                nombre: result.nombre,
+                apellido: result.apellido,
+                foto: result.foto, 
+            }
+        return res.render ('profile', {profile: profile})
+        }).catch((err) => {
+            console.log(err);
+        });
     },
     showProfileEdit: function (req, res) {
         return res.render('profile-edit', {
@@ -41,7 +52,7 @@ const profileController = {
                             res.cookie('userId', result.dataValues.id, {maxAge : 1000 * 60 * 100 } )
                         } 
 
-                        return res.redirect("/profile/")
+                        return res.redirect("/")
                     
                     } else {
                         return res.send('existe el email ' + result.email + 'pero la clave es incorrecta')
@@ -80,7 +91,29 @@ const profileController = {
         req.session.destroy();
         res.clearCookie('userId');
         return res.redirect('/')
-    }
+    },
+    updateProfile: (req,res) => {
+        let info = req.body;
+        let imgPerfil = req.file.filename;
+        let usuario = {
+            email: info.email,
+            nombre: info.nombre,
+            apellido: info.apellido,
+            foto: imgPerfil,
+        }
+        let filtro = {
+            where: {
+                id: req.params.id
+            }
+        }
+        user.update(usuario, filtro)
+        .then((result) => {
+            return res.redirect('/')
+        }).catch((err) => {
+            
+        });
+    },
+
 };
 
 module.exports = profileController;
