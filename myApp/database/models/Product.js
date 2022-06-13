@@ -33,7 +33,7 @@ module.exports = (sequelize, dataTypes) => {
     }
 
 
-    const Products = sequelize.define(alias, cols, config);
+    const Product = sequelize.define(alias, cols, config);
 
     Product.associate = function (models) {
         Product.belongsTo(models.User, {

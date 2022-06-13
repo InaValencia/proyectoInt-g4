@@ -45,7 +45,7 @@ const profileController = {
             res.locals.errors = errors;
             return res.render('login')
 
-        } else if (info.contrasena <= 3) {
+        } else if (info.contrasena.length < 3) {
             errors.message = 'Passwords are required more than 3 words'
             res.locals.errors = errors;
             return res.render('login')
@@ -94,11 +94,15 @@ const profileController = {
         let errors = {};
 
         if (info.email == "") {
-            errors.message = "the email is required";
+            errors.message = "The email is required";
             res.locals.errors = errors;
 
             return res.render('register')
-        } else {
+        } else if (info.contrasena.length < 3) {
+            errors.message = 'Passwords are required more than 3 words'
+            res.locals.errors = errors;
+        }
+        else {
             let usuario = {
                 email: info.email,
                 nombre: info.nombre,
