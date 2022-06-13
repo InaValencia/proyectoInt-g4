@@ -24,8 +24,10 @@
 			<div id="formContent">
 			  <!-- Tabs Titles -->
 			  <h2 class="active"> Sign in </h2>
-		  
-			  <!-- Icon -->
+			 <main> <% if (locals.errors) { %>
+				<p style="color : white"> <%=locals.errors.message  %> </p>
+			   <% } %>
+			  <!-- Icon --></main> 
 		  
 			  <!-- Login Form -->
 			<form class="form-especial" action="/profile/login" method="POST">

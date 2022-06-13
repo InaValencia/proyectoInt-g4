@@ -9,17 +9,17 @@ const profileController = {
     showProfile: function (req, res) {
         let id = req.params.id;
         user.findByPk(id)
-        .then((result) => {
-            let profile = {
-                email: result.email,
-                nombre: result.nombre,
-                apellido: result.apellido,
-                foto: result.foto, 
-            }
-        return res.render ('profile', {profile: profile})
-        }).catch((err) => {
-            console.log(err);
-        });
+            .then((result) => {
+                let profile = {
+                    email: result.email,
+                    nombre: result.nombre,
+                    apellido: result.apellido,
+                    foto: result.foto,
+                }
+                return res.render('profile', { profile: profile })
+            }).catch((err) => {
+                console.log(err);
+            });
     },
     showProfileEdit: function (req, res) {
         return res.render('profile-edit', {
@@ -38,32 +38,50 @@ const profileController = {
                 email: info.email
             }]
         };
+        let errors = {};
 
-        user.findOne(filtro)
-            .then((result) => {
+        if (info.email == "") {
+            errors.message = 'The email is empty'
+            res.locals.errors = errors;
+            return res.render('login')
 
-                if (result != null) {
-                    let passEncriptada = bcrypt.compareSync(info.contrasena, result.contrasena)
-                    if (passEncriptada) {
+        } else if (info.contrasena <= 3) {
+            errors.message = 'Passwords are required more than 3 words'
+            res.locals.errors = errors;
+            return res.render('login')
+        }
 
-                        req.session.user = result.dataValues;
+        else {
+            user.findOne(filtro)
+                .then((result) => {
 
-                        if (req.body.recordarme != undefined) {
-                            res.cookie('userId', result.dataValues.id, {maxAge : 1000 * 60 * 100 } )
-                        } 
+                    if (result != null) {
+                        let passEncriptada = bcrypt.compareSync(info.contrasena, result.contrasena)
+                        if (passEncriptada) {
 
-                        return res.redirect("/")
-                    
+                            req.session.user = result.dataValues;
+
+                            if (req.body.recordarme != undefined) {
+                                res.cookie('userId', result.dataValues.id, { maxAge: 1000 * 60 * 100 })
+                            }
+
+                            return res.redirect("/")
+
+                        } else {
+                            errors.message = 'The email exists, but the password is incorrect'
+                            res.locals.errors = errors;
+                            return res.render('login')
+                        }
                     } else {
-                        return res.send('existe el email ' + result.email + 'pero la clave es incorrecta')
+                        errors.message = 'The email does not exists'
+                        res.locals.errors = errors;
+                        return res.render('login')
                     }
-                } else {
-                    
-                    return res.send('no existe el email ' + info.email)
-                }
-            }).catch((err) => {
-                console.log(err);
-            });     
+                }).catch((err) => {
+                    console.log(err);
+                });
+        }
+
     },
     register: function (req, res) {
         return res.render('register')
@@ -73,26 +91,37 @@ const profileController = {
         let info = req.body;
         let imgPerfil = req.file.filename;
         console.log(info);
-        let usuario = {
-            email: info.email,
-            nombre: info.nombre,
-            apellido: info.apellido,
-            contrasena: bcrypt.hashSync(info.contrasena, 10),
-            foto: imgPerfil,
+        let errors = {};
+
+        if (info.email == "") {
+            errors.message = "the email is required";
+            res.locals.errors = errors;
+
+            return res.render('register')
+        } else {
+            let usuario = {
+                email: info.email,
+                nombre: info.nombre,
+                apellido: info.apellido,
+                contrasena: bcrypt.hashSync(info.contrasena, 10),
+                foto: imgPerfil,
+            }
+            user.create(usuario)
+                .then((result) => {
+                    return res.redirect('/profile/login')
+                }).catch((err) => {
+                    console.log(err);
+                });
         }
-        user.create(usuario)
-            .then((result) => {
-                return res.redirect('/profile/login')
-            }).catch((err) => {
-                console.log(err);
-            });
     },
-    logout: (req,res) => {
+
+    logout: (req, res) => {
         req.session.destroy();
         res.clearCookie('userId');
         return res.redirect('/')
     },
-    updateProfile: (req,res) => {
+
+    updateProfile: (req, res) => {
         let info = req.body;
         let imgPerfil = req.file.filename;
         let usuario = {
@@ -107,13 +136,14 @@ const profileController = {
             }
         }
         user.update(usuario, filtro)
-        .then((result) => {
-            return res.redirect('/')
-        }).catch((err) => {
-            
-        });
+            .then((result) => {
+                return res.redirect('/')
+            }).catch((err) => {
+
+            });
     },
 
 };
 
 module.exports = profileController;
+

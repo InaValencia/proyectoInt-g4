@@ -1,6 +1,6 @@
 const dataBase = require('../db/dataBase')
 const db = require('../database/models');
-const product = db.Products
+const product = db.Product
 const op = db.Sequelize.Op
 const comment = db.Comment
 
