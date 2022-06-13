@@ -96,11 +96,15 @@ const profileController = {
         if (info.email == "") {
             errors.message = "The email is required";
             res.locals.errors = errors;
-
             return res.render('register')
         } else if (info.contrasena.length < 3) {
             errors.message = 'Passwords are required more than 3 words'
             res.locals.errors = errors;
+            return res.render('register')
+        } else if (info.nombre.length == "") {
+            errors.message = 'Your name is required'
+            res.locals.errors = errors;
+            return res.render('register')
         }
         else {
             let usuario = {
