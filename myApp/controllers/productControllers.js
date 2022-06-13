@@ -85,16 +85,16 @@ const productController = {
         });
     },
      deleteProduct: (req, res) => {
+        let id = req.params.id
         product.destroy({
             where : { 
-                id : req.params.id}
+                id : id
+            }
         })
         .then((result) => {
             console.log(result);
-            res.redirect('/')
-        }).catch((err) => {
-            console.log(err);
-        });
+            return res.redirect('/')
+        })
 
      },
     procesarComments : (req, res) => {
@@ -104,7 +104,7 @@ const productController = {
         }
         comment.create(comentario)
         .then((result) => {
-            return res.redirect('/products')
+            return res.redirect('/products/')
         }).catch((err) => {
             console.log(err);
         });
