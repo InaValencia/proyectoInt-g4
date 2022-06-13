@@ -92,20 +92,29 @@ const profileController = {
         let imgPerfil = req.file.filename;
         console.log(info);
         let errors = {};
+        let filtro = {
+            where: [{
+                email: info.email
+            }]
+        };
+        
 
         if (info.email == "") {
             errors.message = "The email is required";
             res.locals.errors = errors;
             return res.render('register')
+
         } else if (info.contrasena.length < 3) {
             errors.message = 'Passwords are required more than 3 words'
             res.locals.errors = errors;
             return res.render('register')
+
         } else if (info.nombre.length == "") {
             errors.message = 'Your name is required'
             res.locals.errors = errors;
             return res.render('register')
-        }
+        
+        } 
         else {
             let usuario = {
                 email: info.email,
@@ -120,9 +129,40 @@ const profileController = {
                 }).catch((err) => {
                     console.log(err);
                 });
-        }
+          }
+           user.findOne()
+                .then(function (result) {
+                    if (info.email != result.email) {
+                        let usuario = {
+                            email: info.email,
+                            nombre: info.nombre,
+                            apellido: info.apellido,
+                            contrasena: bcrypt.hashSync(info.contrasena, 10),
+                            foto: imgPerfil,
+                        }
+                        user.create(usuario)
+                            .then((result) => {
+                                return res.redirect('/profile/login')
+                            }).catch((err) => {
+                                console.log(err);
+                            })
+                        
+                    }
+                    else {
+                        errors.message = 'The email already exists'
+                        res.locals.errors = errors;
+                        return res.render('register')
+                    }
+                }).catch(function (err) {
+                    console.log(err);
+                })
+
+
+
     },
 
+
+    
     logout: (req, res) => {
         req.session.destroy();
         res.clearCookie('userId');
