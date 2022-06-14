@@ -10,13 +10,7 @@ const profileController = {
         let id = req.params.id;
         user.findByPk(id)
             .then((result) => {
-                let profile = {
-                    email: result.email,
-                    nombre: result.nombre,
-                    apellido: result.apellido,
-                    foto: result.foto,
-                }
-                return res.render('profile', { profile: profile })
+                return res.render('profile', { profile: result.dataValues })
             }).catch((err) => {
                 console.log(err);
             });
@@ -98,7 +92,6 @@ const profileController = {
             }]
         };
         
-
         if (info.email == "") {
             errors.message = "The email is required";
             res.locals.errors = errors;
@@ -114,15 +107,16 @@ const profileController = {
             res.locals.errors = errors;
             return res.render('register')
         
-        } else if(imgPerfil.info == ""){
+        } else if (imgPerfil.info == ""){
             errors.message = 'An image is required'
             res.locals.errors = errors;
             return res.render('register')
 
-        } else {
+        } 
+        else {
             user.findOne(filtro)
                 .then((result) => {
-                    if (info.email != result.email) {
+                    if (result == null) {
                         let info = req.body;
                         let imgPerfil = req.file.filename;
                         let usuario = {
@@ -188,4 +182,3 @@ const profileController = {
 };
 
 module.exports = profileController;
-
