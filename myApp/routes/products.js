@@ -21,6 +21,10 @@ let upload = multer({storage : storage})
 
 router.get('/id/:id', productController.showProduct)
 
+//Rutas para mostrar un comentario
+
+router.post('/id/:id', productController.comments)
+
 // Rutas para eliminar una zapatilla 
 router.post('/delete/:id', productController.deleteProduct)
 
@@ -35,10 +39,8 @@ router.get('/edit/:id' , productController.showProductEdit)
 
 router.post('/edit/:id', upload.single('imgProduct'), productController.updateProduct)
 
-// Rutas para mostrar un comentario
 
-// Rutas para agregar y mostrar un comentario
-router.get('/comentario', productController.showComments)
-router.post('/comentario', productController.procesarComments);
+
+
 
 module.exports = router;

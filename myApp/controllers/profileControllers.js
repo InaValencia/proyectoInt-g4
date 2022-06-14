@@ -116,30 +116,18 @@ const profileController = {
         
         } 
         else {
-            let usuario = {
-                email: info.email,
-                nombre: info.nombre,
-                apellido: info.apellido,
-                contrasena: bcrypt.hashSync(info.contrasena, 10),
-                foto: imgPerfil,
-            }
-            user.create(usuario)
+            user.findOne(filtro)
                 .then((result) => {
-                    return res.redirect('/profile/login')
-                }).catch((err) => {
-                    console.log(err);
-                });
-          }
-           user.findOne()
-                .then(function (result) {
                     if (info.email != result.email) {
+                        let info = req.body;
+                        let imgPerfil = req.file.filename;
                         let usuario = {
                             email: info.email,
                             nombre: info.nombre,
                             apellido: info.apellido,
                             contrasena: bcrypt.hashSync(info.contrasena, 10),
                             foto: imgPerfil,
-                        }
+                        };
                         user.create(usuario)
                             .then((result) => {
                                 return res.redirect('/profile/login')
@@ -156,6 +144,8 @@ const profileController = {
                 }).catch(function (err) {
                     console.log(err);
                 })
+          }
+           
 
 
 

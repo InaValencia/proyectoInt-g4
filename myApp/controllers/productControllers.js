@@ -30,11 +30,11 @@ const productController = {
     store: (req, res) => {
         let info = req.body;
         let imgProduct = req.file.filename;
-
         let shoe = {
             photo: imgProduct,
             model: info.model,
-            description: info.description,    
+            description: info.description,   
+            users_id:  req.session.user.id
         }; 
 
 
@@ -97,31 +97,21 @@ const productController = {
         })
 
      },
-    procesarComments : (req, res) => {
+    comments : (req, res) => {
         let info = req.body
         let comentario = {
-            comentario : info.comentario
+            comentario : info.comentario,
+            products_id: req.params.id,
+            users_id : req.session.user.id,
         }
         comment.create(comentario)
         .then((result) => {
-            return res.redirect('/products/')
-        }).catch((err) => {
-            console.log(err);
-        });
-    },
-    showComments : (req, res) => {
-        let id = req.params.id;
-        comment.findByPk(id).then((result) => {
-            let comentario = {
-                comentario: result.comentario, 
-            }
-        return res.render('products', {comentarios : comentario})
+            return res.redirect('/products/id/' + req.params.id)
         }).catch((err) => {
             console.log(err);
         });
     },
     
-
 } ;
 
 module.exports = productController;
