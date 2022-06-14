@@ -114,8 +114,12 @@ const profileController = {
             res.locals.errors = errors;
             return res.render('register')
         
-        } 
-        else {
+        } else if(imgPerfil.info == ""){
+            errors.message = 'An image is required'
+            res.locals.errors = errors;
+            return res.render('register')
+
+        } else {
             user.findOne(filtro)
                 .then((result) => {
                     if (info.email != result.email) {
