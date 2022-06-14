@@ -8,8 +8,9 @@ const User = require('../database/models/User');
 const profileController = {
     showProfile: function (req, res) {
         let id = req.params.id;
-        user.findByPk(id)
+        user.findByPk(id, {all: true, nested: true})
             .then((result) => {
+                console.log(result.seguidores);
                 return res.render('profile', { profile: result.dataValues })
             }).catch((err) => {
                 console.log(err);
