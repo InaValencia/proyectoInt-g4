@@ -40,12 +40,12 @@
 				<div class="col-12 col-lg-4">
 
 				<section class="comments">
-						<% for (let i = 0; i < 4; i++) { %>
+						<% for (let i = 0; i < products.comment.length; i++) { %>
 						<article>
-							<img src= "/images/users/aleVivone.jpeg" alt="img perfil">
+							<img src= "/images/users/<%=products.comment.user.foto%>" alt="img perfil">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile">Username: </a> </strong>
+								<strong> <a href="/profile/<%=products.comment.user.id%>">Username: </a> </strong>
 								 comentario 
 								</p>
 							</div>
