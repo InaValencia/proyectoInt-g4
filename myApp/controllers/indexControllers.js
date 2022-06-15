@@ -17,7 +17,7 @@ const indexController = {
         })
         .then((result) => {
             console.log(result);
-            return res.render('index', {products : result})
+            return res.render('index', {product : result})
         }).catch((err) => {
             console.log(err);
         });

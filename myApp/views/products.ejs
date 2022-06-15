@@ -17,42 +17,42 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= products.model %> </h2> 
+			<h2 class="products-title"><%= product.model %> </h2> 
 			<% if (locals.user != undefined) { %> <!-- aca en realidad hay que hacer que locals.user.id sea == a al id de quien realizo el comentario -->
 			<p class="product-detail-description">
-				<a class= "editButton" href="/products/edit/<%=products.id %>">Editar</a>
+				<a class= "editButton" href="/products/edit/<%=product.id %>">Editar</a>
 			</p>
 			<% } %> 
 
 			<% if (locals.user != undefined) { %>
 			<p class="product-detail-description">
-				<a class= "editButton" href="/products/delete/<%=products.id%>">Eliminar</a>
+				<a class= "editButton" href="/products/delete/<%=product.id%>">Eliminar</a>
 			</p>
 			<% } %> 
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%= products.photo%>" alt="" class="product-detail-img">
+					<img src="/images/products/<%= product.photo%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= products.description  %> </p>
+						<%= product.description  %> </p>
 				</article>
 				<div class="col-12 col-lg-4">
 
 				<section class="comments">
-						<% for (let i = 0; i < products.comment.length; i++) { %>
+						<% for (let i = 0; i < product.comment.length; i++) { %>
 						<article>
-							<img src= "/images/users/<%=products.comment.user.foto%>" alt="img perfil">
+							<img src= "/images/users/<%=product.comment.user.foto%>" alt="img perfil">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile/<%=products.comment.user.id%>">Username: </a> </strong>
+								<strong> <a href="/profile/<%=product.comment.user.id%>">Username: </a> </strong>
 								 comentario 
 								</p>
 							</div>
 						</article>
 						<% } %>
 				</section>
-					<form class="form" action="/products/id/<%=products.id%>" method="POST">
+					<form class="form" action="/products/id/<%=product.id%>" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>

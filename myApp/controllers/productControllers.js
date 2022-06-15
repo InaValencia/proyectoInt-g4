@@ -17,7 +17,7 @@ const productController = {
             }
 
         console.log(shoe);
-        return res.render('products', {products : shoe})
+        return res.render('products', {product : shoe})
         }).catch((err) => {
             console.log(err);
         });
@@ -57,7 +57,7 @@ const productController = {
         model: result.model,
         description: result.description,  
     }
-    return res.render('product-edit', {products : shoe})
+    return res.render('product-edit', {product : shoe})
     }).catch((err) => {
         console.log(err);
     });

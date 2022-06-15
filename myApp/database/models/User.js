@@ -23,7 +23,6 @@ module.exports = (sequelize, dataTypes) => {
         foto: {
             type: dataTypes.STRING,
         }
-
     }
 
     let config = {

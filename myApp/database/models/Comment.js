@@ -39,7 +39,7 @@ module.exports = (sequelize, dataTypes) => {
         })
         Comment.belongsTo(models.User, {
             as : 'user',
-            foreignKey : 'user_id'
+            foreignKey : 'users_id'
         })
     }
 

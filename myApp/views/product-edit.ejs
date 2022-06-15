@@ -24,11 +24,11 @@
 		<div class="wrapper fadeInDown">
 			<div id="formContent">
 			  <!-- Tabs Titles -->
-			  <h2 class="active"> Edit <%= products.model  %>   </h2>
+			  <h2 class="active"> Edit <%= product.model  %>   </h2>
 
 			  <!-- Icon -->
 		  
-			  <form action="/products/edit/<%= products.id %>" method="POST" enctype="multipart/form-data">
+			  <form action="/products/edit/<%= product.id %>" method="POST" enctype="multipart/form-data">
 				<label for="model" class= "letraForm"> Model name: </label>
 				<input type="text" name="model" placeholder= "name of the product" value=""> 
 				<hr>
