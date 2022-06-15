@@ -10,17 +10,10 @@ const profileController = {
         let id = req.params.id;
         user.findByPk(id, {all: true, nested: true})
             .then((result) => {
-                console.log(result.seguidores);
                 return res.render('profile', { profile: result.dataValues })
             }).catch((err) => {
                 console.log(err);
             });
-    },
-    showProfileEdit: function (req, res) {
-        return res.render('profile-edit', {
-            user: dataBase.user,
-            logueado: dataBase.user,
-        })
     },
 
     login: function (req, res) {
@@ -149,13 +142,26 @@ const profileController = {
 
 
     },
-
-
     
     logout: (req, res) => {
         req.session.destroy();
         res.clearCookie('userId');
         return res.redirect('/')
+    },
+
+    showProfileEdit: (req, res) => {
+        let id = req.params.id;
+        user.findByPk(id).then((result) => {
+        let usuario = {
+                email: info.email,
+                nombre: info.nombre,
+                apellido: info.apellido,
+                foto: imgPerfil,
+            }
+        return res.render('product-edit', {usuario : usuario})
+        }).catch((err) => {
+            console.log(err);
+        });
     },
 
     updateProfile: (req, res) => {

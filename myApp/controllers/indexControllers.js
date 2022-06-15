@@ -10,10 +10,10 @@ const indexController = {
             order: [[ "createdAt" , "DESC"]]
         },  
         {
-            include:{
-                all: true,
-                nested:true
-            } 
+            include: [
+                {association: 'user'},
+                {association: 'comment'}
+            ]
         })
         .then((result) => {
             console.log(result);
