@@ -101,7 +101,7 @@ const profileController = {
             res.locals.errors = errors;
             return res.render('register')
         
-        } else if (imgPerfil.info == ""){
+        } else if (imgPerfil == ""){
             errors.message = 'An image is required'
             res.locals.errors = errors;
             return res.render('register')

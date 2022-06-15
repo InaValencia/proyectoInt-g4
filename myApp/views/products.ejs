@@ -40,7 +40,17 @@
 				<div class="col-12 col-lg-4">
 
 				<section class="comments">
-						
+					<% for (let i = 0; i < product.comment.length; i++) { %>
+						<article>
+							<img src= "/images/users/<%=product.comment[i].user.foto%>" alt="img perfil">
+							<div class="data">
+								<p class="user">
+								<strong> <a href="/profile/<%=product.comment[i].user.id%>">Username: </a> </strong>
+									<%= product.comment[i].comentario %> 
+								</p>
+							</div>
+						</article>
+						<% } %>
 				</section>
 					<form class="form" action="/products/id/<%=product.id%>" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario">
@@ -51,6 +61,8 @@
 			</div>
 		</div>
 	</div>
+
+	
 	<!-- /product detail -->
 
 	<!-- footer -->

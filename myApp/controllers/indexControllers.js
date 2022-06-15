@@ -6,18 +6,17 @@ const products = db.Product
 
 const indexController = {
      index: (req, res) => {
-        products.findAll({
-            order: [[ "createdAt" , "DESC"]]
-        },  
+        products.findAll(  
         {
-            include: [
-                {association: 'user'},
-                {association: 'comment'}
-            ]
-        })
+            include: [ { association: 'user' } ]
+        },
+        {
+            order: [[ "createdAt" , "DESC"]]
+        }
+        )
         .then((result) => {
-            console.log(result);
             return res.render('index', {product : result})
+
         }).catch((err) => {
             console.log(err);
         });

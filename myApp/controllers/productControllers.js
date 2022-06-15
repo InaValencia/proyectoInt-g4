@@ -7,7 +7,7 @@ const comment = db.Comment
 const productController = {
     showProduct: (req, res) => {
         let id = req.params.id;
-        product.findByPk(id)
+        product.findByPk(id, {include:{ all: true, nested:true} })
         .then((result) => {
             let shoe = {
                 id: result.id,
