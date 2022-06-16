@@ -17,15 +17,8 @@ const productController = {
             }
         )
         .then((result) => {
-            let shoe = {
-                id: result.id,
-                photo: result.photo,
-                model: result.model,
-                description: result.description,
-            }
 
-        console.log(shoe);
-        return res.render('products', {product : shoe})
+        return res.render('products', {product : result.dataValues})
         }).catch((err) => {
             console.log(err);
         });

@@ -36,6 +36,8 @@
 					<img src="/images/products/<%= product.photo%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
 						<%= product.description  %> </p>
+
+					<p class="product-detail-description"> Created by: <a href="/profile/<%=product.user.id%>"> <%= product.user.nombre %> <%= product.user.apellido %></p> </a>
 				</article>
 				<div class="col-12 col-lg-4">
 
@@ -45,7 +47,7 @@
 							<img src= "/images/users/<%=product.comment[i].user.foto%>" alt="img perfil">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile/<%=product.comment[i].user.id%>">Username: </a> </strong>
+								<strong> <a href="/profile/<%=product.comment[i].user.id%>"> <%=product.comment[i].user.nombre%> <%=product.comment[i].user.apellido%> </a> </strong>
 									<%= product.comment[i].comentario %> 
 								</p>
 							</div>
