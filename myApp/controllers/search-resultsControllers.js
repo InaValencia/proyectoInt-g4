@@ -15,8 +15,10 @@ const searchResultsController = {
            }
            }
       
-        product.findAll(filtro).then((result) => {
-            res.render('search-results', { products : result } )
+        product.findAll(filtro, { include: { all: true, nested: true } })
+        .then((result) => {
+        return res.send(result)
+        return res.render('search-results', { product : result } )
         }).catch((err) => {
             console.log(err);
         });
