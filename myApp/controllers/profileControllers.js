@@ -8,7 +8,13 @@ const User = require('../database/models/User');
 const profileController = {
     showProfile: function (req, res) {
         let id = req.params.id;
-        user.findByPk(id, {all: true, nested: true})
+        user.findByPk(id,  {
+            include:
+            {
+                all: true,
+                nested: true
+            }
+        })
             .then((result) => {
                 return res.render('profile', { profile: result.dataValues })
             }).catch((err) => {
@@ -38,6 +44,7 @@ const profileController = {
             res.locals.errors = errors;
             return res.render('login')
         }
+
 
         else {
             user.findOne(filtro)

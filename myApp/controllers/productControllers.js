@@ -7,17 +7,17 @@ const comment = db.Comment
 const productController = {
     showProduct: (req, res) => {
         let id = req.params.id;
-        product.findByPk(id,
-            {
-                include:
-                {
-                    all: true,
-                    nested: true
-                }
-            }
-        )
-            .then((result) => {
+        
+        let filtro = {
+            include : {
+                all: true,
+                nested: true
+            },
+            order : [["comment", "createdAt" , "DESC"]]
+        }
 
+        product.findByPk(id, filtro)
+            .then((result) => {
                 return res.render('products', { product: result.dataValues })
             }).catch((err) => {
                 console.log(err);
@@ -64,13 +64,15 @@ const productController = {
         });
     },
     updateProduct: (req, res) => {
+
         let info = req.body;
         let imgProduct = req.file.filename;
-        console.log(req.params);
+
         let shoe = {
             photo: imgProduct,
             model: info.model,
             description: info.description,
+            users_id: req.body.users_id
         }
 
         let filtro = {
@@ -78,14 +80,18 @@ const productController = {
                 id: req.params.id
             }
         };
-        console.log(shoe);
-        product.update(shoe, filtro)
-            .then((result) => {
 
+        if (req.session.user.id == shoe.users_id ) {
+            product.update(shoe, filtro)
+            .then((result) => {
                 return res.redirect('/')
             }).catch((err) => {
                 console.log(err);
             });
+        } else {
+            res.redirect('/profile/login')
+        }
+        
     },
     deleteProduct: (req, res) => {
         let id = req.params.id

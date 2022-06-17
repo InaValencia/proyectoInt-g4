@@ -12,12 +12,12 @@ const searchResultsController = {
                { model: { [op.like]: `%${ palabraBuscada}%` } },
                { description: { [op.like]: `%${ palabraBuscada}%` } }
              ]
-           }
+           }, 
+            include: [ { association: 'user' }]
            }
       
-        product.findAll(filtro, { include: { all: true, nested: true } })
+        product.findAll(filtro)
         .then((result) => {
-        return res.send(result)
         return res.render('search-results', { product : result } )
         }).catch((err) => {
             console.log(err);
