@@ -16,6 +16,7 @@ const profileController = {
             }
         })
             .then((result) => {
+                //return res.send(result)
                 return res.render('profile', { profile: result.dataValues })
             }).catch((err) => {
                 console.log(err);
