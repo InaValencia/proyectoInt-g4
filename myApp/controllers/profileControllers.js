@@ -167,26 +167,32 @@ const profileController = {
     },
 
     updateProfile: (req, res) => {
-        let info = req.body;
-        let imgPerfil = req.file.filename;
-        let usuario = {
-            email: info.email,
-            nombre: info.nombre,
-            apellido: info.apellido,
-            foto: imgPerfil,
-        }
-        let filtro = {
-            where: {
-                id: req.params.id
+
+        if (req.session.user.id != req.params.id) {
+            res.redirect('/profile/login')
+        } 
+            let info = req.body;
+            let imgPerfil = req.file.filename;
+            let usuario = {
+                email: info.email,
+                nombre: info.nombre,
+                apellido: info.apellido,
+                foto: imgPerfil,
             }
-        }
-        user.update(usuario, filtro)
+            let filtro = {
+                where: {
+                    id: req.params.id
+                }
+            
+            }
+            user.update(usuario, filtro)
             .then((result) => {
                 req.session.user = result.dataValues;
                 return res.redirect('/profile/' + req.params.id)
             }).catch((err) => {
 
             });
+    
     },
 
 };
