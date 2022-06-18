@@ -159,13 +159,7 @@ const profileController = {
     showProfileEdit: (req, res) => {
         let id = req.params.id;
         user.findByPk(id).then((result) => {
-        let usuario = {
-                email: info.email,
-                nombre: info.nombre,
-                apellido: info.apellido,
-                foto: imgPerfil,
-            }
-        return res.render('product-edit', {usuario : usuario})
+        return res.render('profile-edit', {usuario : result})
         }).catch((err) => {
             console.log(err);
         });
@@ -187,7 +181,8 @@ const profileController = {
         }
         user.update(usuario, filtro)
             .then((result) => {
-                return res.redirect('/')
+                req.session.user = result.dataValues;
+                return res.redirect('/profile/' + req.params.id)
             }).catch((err) => {
 
             });

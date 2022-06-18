@@ -33,9 +33,11 @@ router.get('/logout', profileController.logout)
 
 router.get('/:id', profileController.showProfile);
 
-router.get('/edit', profileController.showProfileEdit);
+//editProfile
 
-router.post('/edit', upload.single('imgPerfil'), profileController.updateProfile);
+router.get('/:id/edit', profileController.showProfileEdit);
+
+router.post('/:id/edit', upload.single('imgPerfil'), profileController.updateProfile);
 
 
 

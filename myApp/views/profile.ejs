@@ -24,12 +24,12 @@
 					
 					<% if (locals.user == undefined) { %>
 			
-					<h1>hola</h1>
+					
 					
 					<% }  else if(locals.user.id != profile.id){ %>
 						<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 					 <% } else { %>
-					<a href="/profile/edit">
+					<a href="/profile/<%= locals.user.id %>/edit">
 						<i class="fas fa-cog"></i>
 					</a>
 					

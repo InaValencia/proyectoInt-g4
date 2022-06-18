@@ -17,7 +17,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Edit <%= usuario.nombre  %> </h2>
+				<h2 class="products-title">Edit <%= locals.user.nombre  %>'s profile </h2>
 			</div>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 		  <!-- Icon -->
 	  
 		  <!-- edit profile Form -->
-		  <form class="form-especial" action="/profile/edit" method="POST" enctype="multipart/form-data">
+		  <form class="form-especial" action="/profile/<%= locals.user.id %>/edit " method="POST" enctype="multipart/form-data">
 			<input type="text" id="login" name="email" placeholder="mail">
 			<hr>
 			<input type="text" id="name" name="nombre" placeholder="name">
@@ -39,7 +39,7 @@
 			<label class= "letraForm" for="profilePic"> Choose a profile pic: </label>
 			<input type="file" name="imgPerfil" placeholder= "Profile pic" value="">
 			<hr>
-			<input type="submit" class="fadeIn fourth" value="Register">
+			<input type="submit" class="fadeIn fourth" value="Submit changes">
 		  </form>
 
 		</div>
