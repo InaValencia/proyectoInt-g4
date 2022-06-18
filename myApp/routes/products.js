@@ -26,7 +26,7 @@ router.get('/id/:id', productController.showProduct)
 router.post('/id/:id', productController.comments)
 
 // Rutas para eliminar una zapatilla 
-router.post('/delete/:id', productController.deleteProduct)
+router.post('/id/:id/delete', productController.deleteProduct)
 
 // Rutas para agregar una zapatilla
 router.get('/add' , productController.showProductAdd)

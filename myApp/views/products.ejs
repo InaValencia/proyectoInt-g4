@@ -24,9 +24,9 @@
 				<a class= "editButton" href="/products/edit/<%=product.id %>">Editar</a>
 			</p>
 
-			<p class="product-detail-description">
-				<a class= "editButton" href="/products/delete/<%=product.id%>">Eliminar</a>
-			</p>
+				<form action="/products/id/<%=product.id%>/delete" class= "editButton" method="POST"> 
+					<button type="submit" class="editButton" style="color: black">Eliminar </button>
+				</form>
 			<% } %> 
 		</div>
 		<div class="product-detail">

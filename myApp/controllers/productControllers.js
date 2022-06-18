@@ -99,12 +99,11 @@ const productController = {
             where: {
                 id: id
             }
-        })
-            .then((result) => {
-                console.log(result);
-                return res.redirect('/')
-            })
-
+        }).then((result) => {
+            return res.redirect('/')
+        }).catch((err) => {
+            
+        });
     },
     comments: (req, res) => {
         if (req.session.user == undefined) {
