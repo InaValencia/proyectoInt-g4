@@ -27,7 +27,14 @@
 					
 					
 					<% }  else if(locals.user.id != profile.id){ %>
-						<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+						<!-- FOLLOW 
+						ACA HAY QUE HACER UN CONDICIONAL PARA QUE SI EL USUARIO YA LO SIGUE, DIGA SEGUIDO
+						-->
+
+						<form action="/profile/follow/<%=profile.id%> " method="POST">
+							<button type="submit" class="btn mt-3 ml-4">SEGUIR</button>
+						</form>
+
 					 <% } else { %>
 					<a href="/profile/<%= locals.user.id %>/edit">
 						<i class="fas fa-cog"></i>

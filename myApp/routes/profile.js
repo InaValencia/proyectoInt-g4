@@ -39,7 +39,8 @@ router.get('/:id/edit', profileController.showProfileEdit);
 
 router.post('/:id/edit', upload.single('imgPerfil'), profileController.updateProfile);
 
-
+// folLow
+// router.post('/follow/:id', profileController.follow)
 
 
 

@@ -102,7 +102,7 @@ const productController = {
         }).then((result) => {
             return res.redirect('/')
         }).catch((err) => {
-            
+            res.send(err)
         });
     },
     comments: (req, res) => {

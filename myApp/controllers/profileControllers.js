@@ -193,7 +193,22 @@ const profileController = {
 
             });
     
-    },
+    }
+    /* follow : (req,res) => {
+        let info = req.body;
+        let usuarioEnSesion = req.session.user.id
+        let usuarioASeguir = req.params.id
+        let follow = {
+            id_usuario_seguidor: usuarioEnSesion,
+            id_usuario_seguido: usuarioASeguir
+        }
+        follower.create(follow).then((result) => {
+            res.redirect('/profile/' + req.params.id)
+        }).catch((err) => {
+            
+        });
+    } */
+
 
 };
 
