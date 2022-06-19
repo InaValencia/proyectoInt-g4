@@ -4,6 +4,7 @@ const db = require('../database/models');
 const user = db.User
 const bcrypt = require('bcryptjs');
 const User = require('../database/models/User');
+const follower = db.Follower
 
 const profileController = {
     showProfile: function (req, res) {
@@ -193,8 +194,8 @@ const profileController = {
 
             });
     
-    }
-    /* follow : (req,res) => {
+    },
+    follow : (req,res) => {
         let info = req.body;
         let usuarioEnSesion = req.session.user.id
         let usuarioASeguir = req.params.id
@@ -202,12 +203,13 @@ const profileController = {
             id_usuario_seguidor: usuarioEnSesion,
             id_usuario_seguido: usuarioASeguir
         }
-        follower.create(follow).then((result) => {
+        follower.create(follow).
+        then((result) => {
             res.redirect('/profile/' + req.params.id)
         }).catch((err) => {
             
         });
-    } */
+    } 
 
 
 };
