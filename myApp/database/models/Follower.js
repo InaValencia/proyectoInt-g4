@@ -11,14 +11,14 @@ module.exports = (sequelize, dataTypes) => {
         id_usuario_seguidor: {
             type: dataTypes.INTEGER
         },
-        id_usuario_seguido: {
+        id_usuarios_seguido: {
             type : dataTypes.INTEGER
         }
 
     }
 
     let config = {
-        tableName: 'users',
+        tableName: 'followers',
         timestamps: false,
         underscored: true,
 
@@ -26,15 +26,15 @@ module.exports = (sequelize, dataTypes) => {
 
     const Follower = sequelize.define(alias, cols, config);
 
-    Follower.associate = function (models) {
+  /*  Follower.associate = function (models) {
         Follower.belongsToMany(models.User, {
             as: 'users',
-            through : 'follower',
+            through : 'followers',
             foreignKey: 'id_usuario_seguidor',
             otherKey: 'users_id',
             timestamps: false
         })
-    };
+    }; */
 
 
 

@@ -39,13 +39,13 @@ module.exports = (sequelize, dataTypes) => {
                 as: 'product',
                 foreignKey: 'users_id'
             })
-            User.belongsToMany(models.Follower, {
-                as: 'followers',
-                through : 'follower',
+          /*  User.belongsToMany(models.Follower, {
+                as: 'follower',
+                through : 'followers',
                 foreignKey: 'users_id',
                 otherKey: 'id_usuario_seguidor',
                 timestamps: false
-            })
+            }) */
     };
 
 
