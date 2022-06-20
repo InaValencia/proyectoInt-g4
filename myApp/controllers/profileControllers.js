@@ -34,6 +34,7 @@ const profileController = {
                 email: info.email
             }]
         };
+        //validacion de email
         let errors = {};
 
         if (info.email == "") {
@@ -94,7 +95,7 @@ const profileController = {
                 email: info.email
             }]
         };
-        
+        //requerimientos de validacion
         if (info.email == "") {
             errors.message = "The email is required";
             res.locals.errors = errors;
