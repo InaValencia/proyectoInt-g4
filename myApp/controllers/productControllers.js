@@ -57,6 +57,7 @@ const productController = {
                 photo: result.photo,
                 model: result.model,
                 description: result.description,
+                users_id: req.session.user.id
             }
             return res.render('product-edit', { product: shoe })
         }).catch((err) => {
@@ -65,30 +66,31 @@ const productController = {
     },
     updateProduct: (req, res) => {
 
-        let info = req.body;
-        let imgProduct = req.file.filename;
 
-        let shoe = {
-            photo: imgProduct,
-            model: info.model,
-            description: info.description,
-            users_id: req.body.users_id
-        }
-
-        let filtro = {
-            where: {
-                id: req.params.id
+        if(req.session.user.id == req.body.users_id) {
+            let info = req.body;
+            let imgProduct = req.file.filename;
+    
+            let shoe = {
+                photo: imgProduct,
+                model: info.model,
+                description: info.description,
+                users_id: req.session.user.id
             }
-        };
-
-        if (req.session.user.id == shoe.users_id ) {
+    
+            let filtro = {
+                where: {
+                    id: req.params.id
+                }
+            };
             product.update(shoe, filtro)
             .then((result) => {
                 return res.redirect('/')
             }).catch((err) => {
                 console.log(err);
             });
-        } else {
+        }
+         else {
             res.redirect('/profile/login')
         }
         
