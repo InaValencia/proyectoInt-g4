@@ -13,7 +13,8 @@ const searchResultsController = {
                { description: { [op.like]: `%${ palabraBuscada}%` } }
              ]
            }, 
-            include: [ { association: 'user' }]
+            include: [ { association: 'user' }],
+            order: [[ "createdAt" , "DESC"]]
            }
       
         product.findAll(filtro)
