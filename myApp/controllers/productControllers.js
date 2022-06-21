@@ -24,10 +24,7 @@ const productController = {
             });
     },
     showProductAdd: function (req, res) {
-        return res.render('product-add', {
-            user: dataBase.user,
-            logueado: dataBase.user.logueado,
-        })
+        return res.render('product-add')
     },
 
     store: (req, res) => {
@@ -57,7 +54,7 @@ const productController = {
                 photo: result.photo,
                 model: result.model,
                 description: result.description,
-                users_id: req.session.user.id
+                users_id: req.params.id
             }
             return res.render('product-edit', { product: shoe })
         }).catch((err) => {
@@ -75,7 +72,6 @@ const productController = {
                 photo: imgProduct,
                 model: info.model,
                 description: info.description,
-                users_id: req.session.user.id
             }
     
             let filtro = {
