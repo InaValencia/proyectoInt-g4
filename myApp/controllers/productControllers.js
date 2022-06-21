@@ -48,28 +48,26 @@ const productController = {
     },
     showProductEdit: (req, res) => {
         let id = req.params.id;
-        product.findByPk(id).then((result) => {
-            let shoe = {
-                id: result.id,
-                photo: result.photo,
-                model: result.model,
-                description: result.description,
-                users_id: req.params.id
+        let filtro = {
+            include : {
+                all: true,
+                nested: true
             }
-            return res.render('product-edit', { product: shoe })
+        }
+        product.findByPk(id, filtro).then((result) => {
+            return res.render('product-edit', { product: result.dataValues })
         }).catch((err) => {
             console.log(err);
         });
     },
     updateProduct: (req, res) => {
-        if(req.session.user.id == product.users_id) {
             let info = req.body;
             let imgProduct = req.file.filename;
-    
             let shoe = {
                 photo: imgProduct,
                 model: info.model,
                 description: info.description,
+                users_id: info.users_id
             }
     
             let filtro = {
@@ -77,19 +75,23 @@ const productController = {
                     id: req.params.id
                 }
             };
+
+            if(req.session.user.id == shoe.users_id) {
             product.update(shoe, filtro)
             .then((result) => {
-                console.log(product.users_id);
+                console.log(shoe.users_id);
+                console.log(shoe.users_id);
                 return res.redirect('/')
             }).catch((err) => {
                 console.log(err);
             });
-        }
-         else {
-            console.log(product.users_id);
-            return res.redirect('/profile/login')
-
-        }
+            }
+            else {
+                console.log(shoe.users_id);
+                console.log(shoe.users_id);
+                return res.redirect('/profile/login')
+            }
+    
         
     },
     deleteProduct: (req, res) => {

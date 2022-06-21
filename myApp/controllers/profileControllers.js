@@ -17,7 +17,7 @@ const profileController = {
             }
         })
             .then((result) => {
-                //return res.send(result)
+                // return res.send(result)
                 return res.render('profile', { profile: result.dataValues })
             }).catch((err) => {
                 console.log(err);
@@ -169,11 +169,6 @@ const profileController = {
     },
 
     updateProfile: (req, res) => {
-
-        if (req.session.user.id != req.params.id) {
-            res.redirect('/profile/login')
-        } 
-        else {
             let info = req.body;
             let imgPerfil = req.file.filename;
             let usuario = {
@@ -181,6 +176,7 @@ const profileController = {
                 nombre: info.nombre,
                 apellido: info.apellido,
                 foto: imgPerfil,
+                users_id : info.users_id
             }
             let filtro = {
                 where: {
@@ -188,14 +184,21 @@ const profileController = {
                 }
             
             }
-            user.update(usuario, filtro)
+            if (req.params.id != usuario.users_id) {
+                return res.redirect('/profile/login')
+            }
+            else {
+                user.update(usuario, filtro)
             .then((result) => {
+                console.log(req.params.id);
+                console.log(usuario.users_id);
                 req.session.user = result.dataValues;
                 return res.redirect('/profile/' + req.params.id)
             }).catch((err) => {
 
             });
-        }
+            }
+            
     
     },
     follow : (req,res) => {
@@ -205,13 +208,35 @@ const profileController = {
             id_usuario_seguidor: usuarioEnSesion,
             id_usuario_seguido: usuarioASeguir
         }
-        follower.create(seguimiento)
+        follower.create(seguimiento, {
+            include:
+            {
+                all: true,
+                nested: true
+            }
+        })
         .then((result) => {
             res.redirect('/profile/' + req.params.id)
         }).catch((err) => {
             
         });
-    }
+    },
+    showFollowers : (req, res) => {
+        let filtro = {
+            where: 
+            [{
+                id_usuario_seguido: req.params.id
+                    
+            }]
+            }
+        follower.findAll(filtro).then((result) => {
+            return res.redirect('/profile/' + req.params.id)
+        }).catch((err) => {
+            console.log(err);
+        });
+    },
+
+
 
 
 };

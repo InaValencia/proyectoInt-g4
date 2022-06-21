@@ -570,4 +570,8 @@ li {
   .deleteButton {
     color: black;
   }
+
+  input.dontShow {
+    display: none;
+  }
 }
