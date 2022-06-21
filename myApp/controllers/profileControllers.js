@@ -173,6 +173,7 @@ const profileController = {
         if (req.session.user.id != req.params.id) {
             res.redirect('/profile/login')
         } 
+        else {
             let info = req.body;
             let imgPerfil = req.file.filename;
             let usuario = {
@@ -194,23 +195,23 @@ const profileController = {
             }).catch((err) => {
 
             });
+        }
     
     },
     follow : (req,res) => {
-        let info = req.body;
         let usuarioEnSesion = req.session.user.id
         let usuarioASeguir = req.params.id
-        let follow = {
+        let seguimiento = {
             id_usuario_seguidor: usuarioEnSesion,
             id_usuario_seguido: usuarioASeguir
         }
-        follower.create(follow).
-        then((result) => {
+        follower.create(seguimiento)
+        .then((result) => {
             res.redirect('/profile/' + req.params.id)
         }).catch((err) => {
             
         });
-    } 
+    }
 
 
 };

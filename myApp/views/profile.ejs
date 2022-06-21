@@ -27,8 +27,12 @@
 					
 					
 					<% }  else if(locals.user.id != profile.id){ %>
-						<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+
+						<form  action="/profile/seguir/<%=profile.id%> " method="POST">
+							<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir</button>
+						</form>
 					 <% } else { %>
+
 					<a href="/profile/<%= locals.user.id %>/edit">
 						<i class="fas fa-cog"></i>
 					</a>
@@ -39,8 +43,7 @@
 				<div>
 					<ul class="">
 						<li class="listItems"> Products created: <%= profile.product.length %> </li>
-						<li class="listItems"> Followers </li>
-						<li class="listItems">   </li>
+						<li class="listItems"> Followers: <%= profile.seguidores.length %> </li>
 					</ul>
 				</div>
 			</div>

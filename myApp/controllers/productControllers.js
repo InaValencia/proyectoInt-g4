@@ -62,9 +62,7 @@ const productController = {
         });
     },
     updateProduct: (req, res) => {
-
-
-        if(req.session.user.id == req.body.users_id) {
+        if(req.session.user.id == product.users_id) {
             let info = req.body;
             let imgProduct = req.file.filename;
     
@@ -81,13 +79,16 @@ const productController = {
             };
             product.update(shoe, filtro)
             .then((result) => {
+                console.log(product.users_id);
                 return res.redirect('/')
             }).catch((err) => {
                 console.log(err);
             });
         }
          else {
-            res.redirect('/profile/login')
+            console.log(product.users_id);
+            return res.redirect('/profile/login')
+
         }
         
     },
