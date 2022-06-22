@@ -37,7 +37,7 @@
 				<hr>
 				<label for="photo" class= "letraForm"> Image of the product: </label>
 				<input type="file" name="imgProduct" placeholder= "photo" value="">
-				<input type="hidden" name="users_id" value="<%=product.user.id%>">
+				<input name="users_id" value="<%=product.user.id%>" style="display: none">
 				<hr>
 				<input type="submit" class="fadeIn fourth" value="ADD">
 			  </form>

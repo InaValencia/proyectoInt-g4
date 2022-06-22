@@ -26,6 +26,7 @@
 
 				<form action="/products/id/<%=product.id%>/delete" class= "editButton" method="POST"> 
 					<button type="submit" class="deleteButton" ">Eliminar </button>
+					<input type="hidden" name="users_id" value="<%=product.user.id%>">
 				</form>
 			<% } %> 
 		</div>

@@ -96,15 +96,25 @@ const productController = {
     },
     deleteProduct: (req, res) => {
         let id = req.params.id
-        product.destroy({
-            where: {
-                id: id
-            }
-        }).then((result) => {
-            return res.redirect('/')
-        }).catch((err) => {
-            res.send(err)
-        });
+        let info = req.body
+        let shoe = {
+            users_id : info.users_id
+        }
+        if (req.session.user.id == shoe.users_id) {
+            product.destroy({
+                where: {
+                    id: id
+                }
+            }).then((result) => {
+                return res.redirect('/')
+            }).catch((err) => {
+                res.send(err)
+            });
+        }
+        else {
+            return res.redirect('/profile/login')
+        }
+      
     },
     comments: (req, res) => {
         if (req.session.user == undefined) {
