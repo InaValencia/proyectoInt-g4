@@ -29,8 +29,16 @@
 					<% }  else if(locals.user.id != profile.id){ %>
 
 						<form  action="/profile/seguir/<%=profile.id%> " method="POST">
+							<% if (locals.errors) { %>
+								<p class="errorMessage" style="font-size: 14px"> <%=locals.errors.message  %> </p>
+							   <% } else { %>
 							<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir</button>
+							<% } %> 
+							<input type="hidden" name="id_usuario_seguidor" value="<%= locals.user.id %>">
+							<input type="hidden" name="id_usuario_seguido" value="<%= profile.id%>">
 						</form>
+						
+						   
 					 <% } else { %>
 
 					<a href="/profile/<%= locals.user.id %>/edit">
@@ -44,6 +52,7 @@
 					<ul class="">
 						<li class="listItems"> Products created: <%= profile.product.length %> </li>
 						<li class="listItems"> Followers: <%= profile.seguidores.length %> </li>
+						<li class="listItems"> Comments: <%= profile.comment.length %> </li>
 					</ul>
 				</div>
 			</div>

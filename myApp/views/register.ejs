@@ -26,7 +26,7 @@
 				  <h2 class="active"> Register </h2>
 				  <!-- Icon -->
 			  <% if (locals.errors) { %>
-			   <p style="color : white"> <%=locals.errors.message  %> </p>
+			   <p class="errorMessage"> <%=locals.errors.message  %> </p>
 			  <% } %>
 				  <!-- Login Form -->
 				<form class="form-especial" action="/profile/register" method="POST" enctype="multipart/form-data">

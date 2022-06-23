@@ -574,4 +574,10 @@ li {
   input.dontShow {
     display: none;
   }
+
+  .errorMessage {
+    color: red;
+    font-size: 10px;
+  }
+
 }

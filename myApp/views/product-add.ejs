@@ -28,7 +28,7 @@
 
 			  <!-- Icon -->
 			  <% if (locals.errors) { %>
-				<p style="color : white"> <%=locals.errors.message  %> </p>
+				<h3 class="errorMessage"> <%=locals.errors.message  %> </h3>
 			   <% } %>
 			  <form action="/products/store" method="POST" enctype="multipart/form-data">
 				<label for="model" class= "letraForm"> Model: </label>

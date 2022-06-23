@@ -1,4 +1,3 @@
-const dataBase = require('../db/dataBase');
 const db = require('../database/models');
 
 const user = db.User
@@ -202,39 +201,52 @@ const profileController = {
     
     },
     follow : (req,res) => {
-        let usuarioEnSesion = req.session.user.id;
-        let usuarioASeguir = req.params.id;
+        let info = req.body;
         let seguimiento = {
-            id_usuario_seguidor: usuarioEnSesion,
-            id_usuario_seguido: usuarioASeguir
+            id_usuario_seguidor:info.id_usuario_seguidor,
+            id_usuario_seguido: info.id_usuario_seguido
         }
-        follower.create(seguimiento, {
-            include:
-            {
+
+        let filtro = {
+            where: [
+                {   id_usuario_seguido: req.params.id,
+                    id_usuario_seguidor: req.session.user.id 
+                }
+            ]
+        }
+        follower.findOne(filtro, {
+            include: {
                 all: true,
                 nested: true
             }
-        })
-        .then((result) => {
-            res.redirect('/profile/' + req.params.id)
+        }).then((result) => {
+            if (result != null) {
+                user.findByPk(req.params.id, {
+                    include: {
+                        all: true,
+                        nested: true
+                    }
+                }).then((result) => {
+                    let errors = { };
+                    errors.message = "You already follow this user";
+                    res.locals.errors = errors
+                    return res.render('profile', {profile: result})
+                }).catch((err) => {
+                    
+                });
+            } else {
+                follower.create(seguimiento)
+                .then((result) => {
+                    res.redirect(`/profile/${info.id_usuario_seguido}`)
+                }).catch((err) => {
+                    console.log(err);
+                });
+            }
         }).catch((err) => {
             
         });
     },
-    showFollowers : (req, res) => {
-        let filtro = {
-            where: 
-            [{
-                id_usuario_seguido: req.params.id
-                    
-            }]
-            }
-        follower.findAll(filtro).then((result) => {
-            return res.redirect('/profile/' + req.params.id)
-        }).catch((err) => {
-            console.log(err);
-        });
-    },
+
 
 
 
