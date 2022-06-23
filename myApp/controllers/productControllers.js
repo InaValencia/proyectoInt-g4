@@ -28,6 +28,10 @@ const productController = {
     },
 
     store: (req, res) => {
+        if (req.session.user == undefined) {
+            res.redirect('/profile/login')
+        } 
+        
         let info = req.body;
         let imgProduct = req.file.filename;
         let shoe = {
