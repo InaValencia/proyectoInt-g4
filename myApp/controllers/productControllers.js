@@ -36,14 +36,31 @@ const productController = {
             description: info.description,
             users_id: req.session.user.id
         };
+        let errors = {};
+         if (info.model == "") {
+            errors.message = 'A model is required'
+            res.locals.errors = errors;
+            return res.render('product-add')
+
+            
+        } else if (info.description == "") {
+            errors.message = 'A description is needed'
+            res.locals.errors = errors;
+            return res.render('product-add')
 
 
-        product.create(shoe)
+        } else if (imgProduct == undefined) {
+            errors.message = 'An image is required'
+            res.locals.errors = errors;
+            return res.render('product-add')
+
+
+        } else{ product.create(shoe)
             .then((result) => {
                 return res.redirect('/')
             }).catch((err) => {
                 return res.send('Hay un error' + err)
-            });
+            });}
 
     },
     showProductEdit: (req, res) => {

@@ -27,7 +27,9 @@
 			  <h2 class="active"> Add Product  </h2>
 
 			  <!-- Icon -->
-		  
+			  <% if (locals.errors) { %>
+				<p style="color : white"> <%=locals.errors.message  %> </p>
+			   <% } %>
 			  <form action="/products/store" method="POST" enctype="multipart/form-data">
 				<label for="model" class= "letraForm"> Model: </label>
 				<input type="text" name="model" placeholder= "name of the product" value=""> 
