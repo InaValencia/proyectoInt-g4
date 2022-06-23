@@ -1,8 +1,8 @@
-const dataBase = require('../db/dataBase')
+const dataBase = require('../db/dataBase');
 const db = require('../database/models');
-const product = db.Product
-const op = db.Sequelize.Op
-const comment = db.Comment
+const product = db.Product;
+const op = db.Sequelize.Op;
+const comment = db.Comment;
 
 const productController = {
     showProduct: (req, res) => {
@@ -14,7 +14,7 @@ const productController = {
                 nested: true
             },
             order : [["comment", "createdAt" , "DESC"]]
-        }
+        };
 
         product.findByPk(id, filtro)
             .then((result) => {
@@ -24,7 +24,7 @@ const productController = {
             });
     },
     showProductAdd: function (req, res) {
-        return res.render('product-add')
+        return res.render('product-add');
     },
 
     store: (req, res) => {
@@ -38,19 +38,19 @@ const productController = {
         };
         let errors = {};
          if (info.model == "") {
-            errors.message = 'A model is required'
+            errors.message = 'A model is required';
             res.locals.errors = errors;
             return res.render('product-add')
 
             
         } else if (info.description == "") {
-            errors.message = 'A description is needed'
+            errors.message = 'A description is needed';
             res.locals.errors = errors;
             return res.render('product-add')
 
 
         } else if (imgProduct == undefined) {
-            errors.message = 'An image is required'
+            errors.message = 'An image is required';
             res.locals.errors = errors;
             return res.render('product-add')
 
@@ -72,7 +72,7 @@ const productController = {
             }
         }
         product.findByPk(id, filtro).then((result) => {
-            return res.render('product-edit', { product: result.dataValues })
+            return res.render('product-edit', { product: result.dataValues });
         }).catch((err) => {
             console.log(err);
         });
@@ -112,7 +112,7 @@ const productController = {
         
     },
     deleteProduct: (req, res) => {
-        let id = req.params.id
+        let id = req.params.id;
         let info = req.body
         let shoe = {
             users_id : info.users_id
@@ -136,10 +136,9 @@ const productController = {
     comments: (req, res) => {
         if (req.session.user == undefined) {
             res.redirect('/profile/login')
-           
-        
         } 
-        let info = req.body
+
+        let info = req.body;
         let comentario = {
             comentario: info.comentario,
             products_id: req.params.id,

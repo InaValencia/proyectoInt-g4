@@ -38,12 +38,12 @@ const profileController = {
         let errors = {};
 
         if (info.email == "") {
-            errors.message = 'The email is empty'
+            errors.message = 'The email is empty';
             res.locals.errors = errors;
             return res.render('login')
 
         } else if (info.contrasena.length < 3) {
-            errors.message = 'Passwords are required more than 3 words'
+            errors.message = 'Passwords are required more than 3 words';
             res.locals.errors = errors;
             return res.render('login')
         }
@@ -54,7 +54,7 @@ const profileController = {
                 .then((result) => {
 
                     if (result != null) {
-                        let passEncriptada = bcrypt.compareSync(info.contrasena, result.contrasena)
+                        let passEncriptada = bcrypt.compareSync(info.contrasena, result.contrasena);
                         if (passEncriptada) {
 
                             req.session.user = result.dataValues;
@@ -66,12 +66,12 @@ const profileController = {
                             return res.redirect("/")
 
                         } else {
-                            errors.message = 'The email exists, but the password is incorrect'
+                            errors.message = 'The email exists, but the password is incorrect';
                             res.locals.errors = errors;
                             return res.render('login')
                         }
                     } else {
-                        errors.message = 'The email does not exists'
+                        errors.message = 'The email does not exists';
                         res.locals.errors = errors;
                         return res.render('login')
                     }
@@ -102,17 +102,17 @@ const profileController = {
             return res.render('register')
 
         } else if (info.contrasena.length < 3) {
-            errors.message = 'Passwords are required more than 3 words'
+            errors.message = 'Passwords are required more than 3 words';
             res.locals.errors = errors;
             return res.render('register')
 
         } else if (info.nombre.length == "") {
-            errors.message = 'Your name is required'
+            errors.message = 'Your name is required';
             res.locals.errors = errors;
             return res.render('register')
         
         } else if (imgPerfil == ""){
-            errors.message = 'An image is required'
+            errors.message = 'An image is required';
             res.locals.errors = errors;
             return res.render('register')
 
@@ -139,8 +139,8 @@ const profileController = {
                         
                     }
                     else {
-                        errors.message = 'The email already exists'
-                        res.locals.errors = errors;
+                        errors.message = 'The email already exists';
+                        res.locals.errors = errors;;
                         return res.render('register')
                     }
                 }).catch(function (err) {
@@ -202,8 +202,8 @@ const profileController = {
     
     },
     follow : (req,res) => {
-        let usuarioEnSesion = req.session.user.id
-        let usuarioASeguir = req.params.id
+        let usuarioEnSesion = req.session.user.id;
+        let usuarioASeguir = req.params.id;
         let seguimiento = {
             id_usuario_seguidor: usuarioEnSesion,
             id_usuario_seguido: usuarioASeguir
