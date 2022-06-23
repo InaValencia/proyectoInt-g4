@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 23-06-2022 a las 01:33:00
+-- Tiempo de generación: 23-06-2022 a las 20:59:08
 -- Versión del servidor: 5.7.34
 -- Versión de PHP: 7.4.21
 
@@ -59,7 +59,10 @@ INSERT INTO `comments` (`id`, `comentario`, `products_id`, `users_id`, `createdA
 (52, 'Muy facheras', 65, 25, '2022-06-22 17:29:31', '2022-06-22 17:29:31', NULL),
 (53, 'Estas codean solas', 64, 25, '2022-06-22 17:29:37', '2022-06-22 17:29:37', NULL),
 (54, 'Hola', 65, 24, '2022-06-22 17:47:07', '2022-06-22 17:47:07', NULL),
-(55, 'Muy buenas', 65, 24, '2022-06-22 18:48:37', '2022-06-22 18:48:37', NULL);
+(55, 'Muy buenas', 65, 24, '2022-06-22 18:48:37', '2022-06-22 18:48:37', NULL),
+(56, 'Unas de mis favoritas, lejos', 64, 24, '2022-06-23 02:23:11', '2022-06-23 02:23:11', NULL),
+(57, 'Hola', 64, 24, '2022-06-23 11:24:05', '2022-06-23 11:24:05', NULL),
+(58, 'Buenas', 64, 24, '2022-06-23 11:24:50', '2022-06-23 11:24:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,6 +75,18 @@ CREATE TABLE `followers` (
   `id_usuario_seguidor` int(11) NOT NULL,
   `id_usuario_seguido` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `followers`
+--
+
+INSERT INTO `followers` (`id`, `id_usuario_seguidor`, `id_usuario_seguido`) VALUES
+(7, 23, 25),
+(8, 24, 23),
+(9, 21, 24),
+(10, 23, 24),
+(11, 23, 22),
+(12, 24, 25);
 
 -- --------------------------------------------------------
 
@@ -105,7 +120,8 @@ INSERT INTO `products` (`id`, `description`, `photo`, `model`, `users_id`, `crea
 (62, 'Dropping with a reflective colorway, the Yeezy Boost 350 V2 Yecheil Non-Reflective emerges with a vibrant look. The upper is built with Primeknit, working a series of bright hues into its construction. Contrasted by a black monofilament stripe that runs through the design, a black TPU midsole underfoot houses a Boost unit, with a rubber outsole for traction', 'imgProduct-1655854516373.png', 'Yeezy 350', 21, '2022-06-21 23:35:16', '2022-06-21 23:35:16', '2022-06-21 23:39:02'),
 (63, 'Dropping with a reflective colorway, the Yeezy Boost 350 V2 Yecheil Non-Reflective emerges with a vibrant look. The upper is built with Primeknit, working a series of bright hues into its construction. Contrasted by a black monofilament stripe that runs through the design, a black TPU midsole underfoot houses a Boost unit, with a rubber outsole for traction', 'imgProduct-1655854806890.png', 'Yeezy 350', 24, '2022-06-21 23:40:06', '2022-06-21 23:40:06', NULL),
 (64, 'The Air Jordan 1 Retro High OG Light Smoke Grey emerges with a neutral look and a vibrant accent. The shoes upper features a white leather base overlaid by Light Smoke Grey suede, with black contrast on the Swoosh, collar, laces and tongue tag. The collar flap highlights the look in Varsity Red, matched by the tongue branding, while an Air midsole and concentric outsole support the fit underfoot', 'imgProduct-1655854827990.png', 'Jordan 1 high', 24, '2022-06-21 23:40:27', '2022-06-21 23:40:27', NULL),
-(65, 'Part of a collaboration from Virgil Abloh and Nike, the OFF-WHITE x Air Max 90 Black emerges with a bold take on the classic runner. The shoes upper is built with a mix of leather, suede and nubuck, all finished in black. The Swoosh branding contrasts the look, while the shoelaces and medial side sport Ablohs usual text branding. Underfoot, a black midsole houses a visible Air unit in the heel for cushioning', 'imgProduct-1655917978878.png', 'OFF-WHITE X AIR MAX 90 BLACK', 25, '2022-06-22 17:12:58', '2022-06-22 17:12:58', NULL);
+(65, 'Part of a collaboration from Virgil Abloh and Nike, the OFF-WHITE x Air Max 90 Black emerges with a bold take on the classic runner. The shoes upper is built with a mix of leather, suede and nubuck, all finished in black. The Swoosh branding contrasts the look, while the shoelaces and medial side sport Ablohs usual text branding. Underfoot, a black midsole houses a visible Air unit in the heel for cushioning', 'imgProduct-1655917978878.png', 'OFF-WHITE X AIR MAX 90 BLACK', 25, '2022-06-22 17:12:58', '2022-06-22 17:12:58', NULL),
+(66, 'Prueba', 'imgProduct-1655976211867.png', 'Prueba', 24, '2022-06-23 09:23:31', '2022-06-23 09:23:31', '2022-06-23 09:23:34');
 
 -- --------------------------------------------------------
 
@@ -150,7 +166,7 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `followers`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario_seguidor` (`id_usuario_seguidor`),
+  ADD KEY `followers_ibfk_1` (`id_usuario_seguidor`),
   ADD KEY `followers_ibfk_2` (`id_usuario_seguido`);
 
 --
@@ -174,19 +190,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
