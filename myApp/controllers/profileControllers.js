@@ -201,12 +201,6 @@ const profileController = {
     
     },
     follow : (req,res) => {
-        let info = req.body;
-        let seguimiento = {
-            id_usuario_seguidor:info.id_usuario_seguidor,
-            id_usuario_seguido: info.id_usuario_seguido
-        }
-
         let filtro = {
             where: [
                 {   id_usuario_seguido: req.params.id,
@@ -235,6 +229,11 @@ const profileController = {
                     
                 });
             } else {
+                let info = req.body;
+                let seguimiento = {
+                    id_usuario_seguidor: info.id_usuario_seguidor,
+                    id_usuario_seguido: info.id_usuario_seguido
+                }
                 follower.create(seguimiento)
                 .then((result) => {
                     res.redirect(`/profile/${info.id_usuario_seguido}`)
